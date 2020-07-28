@@ -22,6 +22,11 @@ class ProductDetailsView(DetailView):
     template_name = "products_details.html"
 
 
+def CategoryView(req, cats):
+    category_items = Item.objects.filter(category=cats)
+    return render(req, 'category.html', {"cats": cats, "category_items": category_items})
+
+
 def cart(req):
 
     return render(req, "cart.html")

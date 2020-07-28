@@ -9,7 +9,7 @@ from django.shortcuts import reverse
 # )
 
 
-class ProductCategory(models.Model):
+class Category(models.Model):
     name = models.CharField(max_length=20)
 
     @staticmethod
@@ -20,12 +20,15 @@ class ProductCategory(models.Model):
         return self.name
 
 
+# choices = Category.objects.all().values_list('name', 'name')
+
+
 class Item(models.Model):
     title = models.CharField(max_length=100)
     price = models.FloatField()
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
-        ProductCategory, on_delete=models.CASCADE, blank=True, null=True)
+        Category, on_delete=models.CASCADE, max_length=255, default="noCat")
     # label = models.CharField(choices=LABEL_CHOICES, max_length=5)
 
     def __str__(self):

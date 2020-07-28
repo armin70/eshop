@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+	
 		<!-- breadcumb-area start -->
 		<div class="bradcumb-area black-opacity bg-img-1">
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="bradcumb-wrap">
-							<h2>Shop Full Width</h2>
+							<h2>{{cats}}</h2>
 							<ul>
 								<li><a href="index.html">Home</a></li>
 								<li>|</li>
@@ -52,7 +52,7 @@
 						<div class="tab-content">
 							<div class="tab-pane active" id="grid">
 								<div class="row">
-								{% for item in object_list %}
+								{% for item in category_items %}
 										<div class="col-xs-12 col-lg-3 col-md-4 col-sm-6">
 											<div class="product-wrap mb-30">
 												<div class="product-img">
