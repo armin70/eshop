@@ -2,12 +2,12 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
-from .models import Item, Order, OrderItem
+from .models import Item, Order, OrderItem, Category
 
 
 def index(req):
     context = {
-        'items': Item.objects.all()
+        'items': Item.objects.all(),
     }
     return render(req, "index.html", context)
 
@@ -22,9 +22,10 @@ class ProductDetailsView(DetailView):
     template_name = "products_details.html"
 
 
-def CategoryView(req, cats):
-    category_items = Item.objects.filter(category=cats)
-    return render(req, 'category.html', {"cats": cats, "category_items": category_items})
+def CategoryView(req, id):
+    category = Category.objects.filter(id=id)
+    category_items = Item.objects.filter(category=category[0])
+    return render(req, 'category.html', {"cats": category, "category_items": category_items})
 
 
 def cart(req):

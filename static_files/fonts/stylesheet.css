@@ -9,3 +9,12 @@
 	font-weight: normal;
 	font-style: normal;
 }
+@font-face {
+	font-family: 'dana';
+	src: url('dana-regular.eot');
+	src: url('dana-regular.eot?#iefix') format('embedded-opentype'),
+		url('dana-regular.woff') format('woff'),
+		url('dana-regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}

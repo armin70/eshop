@@ -53,7 +53,7 @@
 		
 		<div class="overlay-bg"></div>
 		<header class="home2-header-area">
-			<div class="header-muddil-area bg-1">
+			{% comment %} <div class="header-muddil-area bg-1">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-3 col-sm-4 col-xs-12">
@@ -80,160 +80,38 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> {% endcomment %}
 			<div class="header-bottom-area" id="sticky-header">
 				<div class="container">
 					<div class="row">
-							<div class="col-md-2 col-sm-6 col-xs-8">
+							<div class="col-md-3 col-sm-6 col-xs-8">
 							<div class="header-bottom-right text-right">
-								<ul>
-									<li><a href="javascript:void(0);"><i class="fa fa-heart"></i> <span>2</span></a>
-										<ul>
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/4.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Man Product</a>
-													<p>$30.00</p>
-												</div>
-											</li>
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/2.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Woman Product</a>
-													<p>$35.00</p>
-												</div>
-											</li>
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/3.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Kids Product</a>
-													<p>$15.00</p>
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li><a href="javascript:void(0);"><i class="fa fa-shopping-cart"></i> <span>3</span></a>
-										<ul class="wishlist-wrap">
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/2.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Woman Product</a>
-													<p>$30.00</p>
-												</div>
-											</li>
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/4.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Man Product</a>
-													<p>$35.00</p>
-												</div>
-											</li>
-											<li class="wishlist">
-												<div class="wishlist-image">
-													<img src="{% static 'img/product/small/3.png' %}" alt="" />
-												</div>
-												<div class="wishlist-content">
-													<a href="#">Kids Product</a>
-													<p>$15.00</p>
-												</div>
-											</li>
-										</ul>
-									</li>
-									<li><a href="javascript:void(0);"><i class="fa fa-search"></i></a>
-										<ul class="search">
-											<li class="search-wrap">
-												<form action="#">
-													<input type="text" placeholder="Search Here.."/>
-													<button><i class="fa fa-search"></i></button>
-												</form>
-											</li>
-										</ul>
-									</li>
-								</ul>
+								<div class="logo">
+								<h1><a href="/"></h1>
+							</div>
 							</div>
 						</div>
 						<div class="col-sm-1 clear col-xs-4 hidden-md hidden-lg">
 							<div class="responsive-menu-wrap floatright"></div>
 						</div>
-						<div class="col-md-7 hidden-sm hidden-xs">
+						<div class="col-md-9 hidden-sm hidden-xs">
 							<div class="mainmenu">
 								<ul id="navigation">
-									<li class="active"><a href="index.html">Home <i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="index.html">Home Page One</a></li>
-											<li><a href="index2.html">Home Page Two</a></li>
+									<li class="{% if request.resolver_match.url_name == 'index' %}active{% endif %}"><a href="/">صفحه اصلی </a></i>
+									<li class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"><a href="/products">فروشگاه </a></i>
+									<li><a href="Shop.html">محصولات<i class="fa fa-caret-down"></i></a>
+									<ul>
+									{% for cat in cats %}
+											<li><a href="/categories/{{cat.id}}">{{cat}}</a></li>
+									{% endfor %}
 										</ul>
 									</li>
-									<li><a href="Shop.html">Shop <i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="shop.html">Shop page</a></li>
-											<li><a href="shop-left-sidebar.html">Shop Left Sidebar</a></li>
-											<li><a href="shop-right-sidebar.html">Shop right Sidebar</a></li>
-											<li><a href="product-details.html">Product Details</a></li>
-											<li><a href="cart.html">Shopping Cart</a></li>
-										</ul>
-									</li>
-									<li><a href="portfolio.html">Portfolio <i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="portfolio.html">Portfolio</a></li>
-											<li><a href="portfolio-2column.html">Portfolio 2 Column</a></li>
-											<li><a href="portfolio-4column.html">Portfolio 4 Column</a></li>
-											<li><a href="portfolio-messonary.html">Portfolio Mesonnary</a></li>
-										</ul>
-									</li>
-									<li><a href="blog.html">Blog <i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="blog.html">blog page</a></li>
-											<li><a href="blog-2column.html">blog 2 column</a></li>
-											<li><a href="blog-list.html">blog list</a></li>
-											<li><a href="blog-left-sidebar.html">blog Left Sidebar</a></li>
-											<li><a href="blog-right-sidebar.html">blog Right Sidebar</a></li>
-											<li><a href="blog-details.html">blog Details</a></li>
-										</ul>
-									</li>
-									<li><a href="#">Pages <i class="fa fa-caret-down"></i></a>
-										<ul>
-											<li><a href="about.html">About Us</a></li>
-											<li><a href="404.html">404 Page</a></li>
-											<li><a href="commingsoon.html">Comming Soon</a></li>
-											<li><a href="wishlist.html">Wishlist Page</a></li>
-											<li><a href="checkout.html">Checkout Page</a></li>
-										</ul>
-									</li>
-									<li><a href="contact.html">Contact</a></li>
+							<li class=""><a href="/">تماس با ما </a></i>
+							<li class=""><a href="/">درباره ما </a></i>
 								</ul>
 							</div>
 						</div>
 					
-                        <div class="col-md-3 col-sm-5 col-xs-12">
-							<div class="catagory-wrap">
-								<a href="javascript:void(0);"><i class="fa fa-bars"></i>All Collections</a>
-								<div class="all-Collection">
-									<ul>
-										<li><a href="#"><i class="fa fa-book"></i> Book</a></li>
-										<li><a href="#"><i class="fa fa-medkit"></i> Health & Beauty</a></li>
-										<li><a href="#"><i class="fa fa-cutlery"></i>Homelife</a></li>
-										<li><a href="#"><i class="fa fa-medkit"></i>Home Appliances</a></li>
-										<li><a href="#"><i class="fa fa-mobile"></i>Smartphones & Cell Phones</a></li>
-										<li><a href="#"><i class="fa fa-camera-retro"></i>Camera – Camcorder</a></li>
-										<li><a href="#"><i class="fa fa-clone"></i>Clothing</a></li>
-										<li><a href="#"><i class="fa fa-bandcamp"></i>Kids & Baby</a></li>
-										<li><a href="#"><i class="fa fa-futbol-o"></i>Sport & Outdoor</a></li>
-										<li><a href="#"><i class="fa fa-spoon"></i>Stationery</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

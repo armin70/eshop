@@ -127,14 +127,15 @@
 				</div>
 				<div class="row">
 					<div class="product-active next-prev-style">
+					{% for item in items %}
 						<div class="col-xs-12">
 							<div class="product-wrap">
 								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/1.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/2.jpg' %}" alt="">
+									<a href="{{item.get_absolute_url}}">
+										<img class="primary" src="{{item.img_url.url}}" alt="">
+										<img class="secondary" src="{{item.img_url.url}}" alt="">
 									</a>
-									<div class="product-icon">
+									{% comment %} <div class="product-icon">
 										<ul>
 											<li>
 												<a href="cart.html">
@@ -156,11 +157,11 @@
 											</li>
 										</ul>
 									</div>
-									<span class="sale">Sale</span>
+									<span class="sale">Sale</span> {% endcomment %}
 								</div>
 								<div class="product-content text-center">
-									<a href="product-details.html">Man T-Shirt</a>
-									<div class="ratting">
+									<a href="{{item.get_absolute_url}}">{{item.title}}</a>
+									{% comment %} <div class="ratting">
 										<ul>
 											<li><i class="fa fa-star"></i></li>
 											<li><i class="fa fa-star"></i></li>
@@ -168,251 +169,13 @@
 											<li><i class="fa fa-star-half-o"></i></li>
 											<li><i class="fa fa-star-o"></i></li>
 										</ul>
-									</div>
-									<span>$28.00</span>
-									<del>$30.00</del>
+									</div> {% endcomment %}
+									<div>{{item.price}}تومان</div>
+									{% comment %} <del>$30.00</del> {% endcomment %}
 								</div>
 							</div>
 						</div>
-						<div class="col-xs-12">
-							<div class="product-wrap">
-								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/3.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/4.jpg' %}" alt="">
-									</a>
-									<div class="product-icon">
-										<ul>
-											<li>
-												<a href="cart.html">
-													<i class="fa fa-shopping-cart"></i>
-													<span>Add to Cart</span>
-												</a>
-											</li>
-											<li>
-												<a href="wishlist.html">
-													<i class="fa fa-heart"></i>
-													<span>Wishlist</span>
-												</a>
-											</li>
-											<li>
-												<a href="checkout.html">
-													<i class="fa fa-compress"></i>
-													<span>Compare</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-									<div class="tyming-wrapper">
-										<div data-countdown="2016/06/01"></div>
-									</div>
-									<span class="new">New</span>
-								</div>
-								<div class="product-content text-center">
-									<a href="product-details.html">Woman T-Shirt</a>
-									<div class="ratting">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-									<span>$30.00</span>
-									<del>$32.00</del>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12">
-							<div class="product-wrap">
-								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/5.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/6.jpg' %}" alt="">
-									</a>
-									<div class="product-icon">
-										<ul>
-											<li>
-												<a href="cart.html">
-													<i class="fa fa-shopping-cart"></i>
-													<span>Add to Cart</span>
-												</a>
-											</li>
-											<li>
-												<a href="wishlist.html">
-													<i class="fa fa-heart"></i>
-													<span>Wishlist</span>
-												</a>
-											</li>
-											<li>
-												<a href="checkout.html">
-													<i class="fa fa-compress"></i>
-													<span>Compare</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="product-content text-center">
-									<a href="product-details.html">Kids T-Shirt</a>
-									<div class="ratting">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-										</ul>
-									</div>
-									<span>$25.00</span>
-									<del>$24.50</del>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12">
-							<div class="product-wrap">
-								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/7.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/8.jpg' %}" alt="">
-									</a>
-									<div class="product-icon">
-										<ul>
-											<li>
-												<a href="cart.html">
-													<i class="fa fa-shopping-cart"></i>
-													<span>Add to Cart</span>
-												</a>
-											</li>
-											<li>
-												<a href="wishlist.html">
-													<i class="fa fa-heart"></i>
-													<span>Wishlist</span>
-												</a>
-											</li>
-											<li>
-												<a href="checkout.html">
-													<i class="fa fa-compress"></i>
-													<span>Compare</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-									<span class="sale">Sale</span>
-								</div>
-								<div class="product-content text-center">
-									<a href="product-details.html">Man T-Shirt</a>
-									<div class="ratting">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star-half-o"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-									<span>$20.00</span>
-									<del>$22.00</del>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12">
-							<div class="product-wrap">
-								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/9.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/10.jpg' %}" alt="">
-									</a>
-									<div class="product-icon">
-										<ul>
-											<li>
-												<a href="cart.html">
-													<i class="fa fa-shopping-cart"></i>
-													<span>Add to Cart</span>
-												</a>
-											</li>
-											<li>
-												<a href="wishlist.html">
-													<i class="fa fa-heart"></i>
-													<span>Wishlist</span>
-												</a>
-											</li>
-											<li>
-												<a href="checkout.html">
-													<i class="fa fa-compress"></i>
-													<span>Compare</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-									<div class="tyming-wrapper">
-										<div data-countdown="2018/02/15"></div>
-									</div>
-									<span class="new">New</span>
-								</div>
-								<div class="product-content text-center">
-									<a href="product-details.html">Woman T-Shirt</a>
-									<div class="ratting">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star-o"></i></li>
-										</ul>
-									</div>
-									<span>$35.00</span>
-									<del>$32.00</del>
-								</div>
-							</div>
-						</div>
-						<div class="col-xs-12">
-							<div class="product-wrap">
-								<div class="product-img">
-									<a href="#">
-										<img class="primary" src="{% static 'img/product/11.jpg' %}" alt="">
-										<img class="secondary" src="{% static 'img/product/12.jpg' %}" alt="">
-									</a>
-									<div class="product-icon">
-										<ul>
-											<li>
-												<a href="cart.html">
-													<i class="fa fa-shopping-cart"></i>
-													<span>Add to Cart</span>
-												</a>
-											</li>
-											<li>
-												<a href="wishlist.html">
-													<i class="fa fa-heart"></i>
-													<span>Wishlist</span>
-												</a>
-											</li>
-											<li>
-												<a href="checkout.html">
-													<i class="fa fa-compress"></i>
-													<span>Compare</span>
-												</a>
-											</li>
-										</ul>
-									</div>
-								</div>
-								<div class="product-content text-center">
-									<a href="product-details.html">Kids T-Shirt</a>
-									<div class="ratting">
-										<ul>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-											<li><i class="fa fa-star"></i></li>
-										</ul>
-									</div>
-									<span>$28.00</span>
-									<del>$27.00</del>
-								</div>
-							</div>
-						</div>
+					{% endfor %}
 					</div>
 				</div>
 			</div>

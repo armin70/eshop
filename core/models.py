@@ -25,10 +25,10 @@ class Category(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
-    price = models.FloatField()
+    price = models.IntegerField()
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
-        Category, on_delete=models.CASCADE, max_length=255, default="noCat")
+        Category, on_delete=models.CASCADE, max_length=255, default=1)
     # label = models.CharField(choices=LABEL_CHOICES, max_length=5)
 
     def __str__(self):

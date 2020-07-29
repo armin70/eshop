@@ -38,7 +38,7 @@ body{
 	background:#fff;
 	line-height:26px;
 	font-size:14px;
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'dana', sans-serif;
 	direction:rtl;
 }
 ul {
@@ -57,7 +57,7 @@ a:hover{
 	outline:none;
 }
 h1,h2,h3,h4,h5,h6{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'dana', sans-serif;
 	margin:0px 0px 10px 0px;
 }
 img {max-width:100%;height:auto}
@@ -269,7 +269,7 @@ img {max-width:100%;height:auto}
   padding: 15px 0px;
 }
 .logo h1 {
-  font-family: "Bebas Neue";
+  font-family: "dana";
   font-size: 35px;
   font-weight: 700;
   margin-bottom: 0;
@@ -538,7 +538,7 @@ img {max-width:100%;height:auto}
 	color:#F25C27;
 }
 .slider-content h3 {
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	font-size: 60px;
 	font-weight: 700;
 	margin-bottom: 20px;
@@ -606,7 +606,7 @@ img {max-width:100%;height:auto}
 }
 .banner-content h2 {
 	color: #f25c27;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	font-weight: 700;
 	margin: 15px 0;
 	text-transform: uppercase;
@@ -625,7 +625,7 @@ img {max-width:100%;height:auto}
 }
 .section-title h2 {
   display: inline-block;
-  font-family: "Bebas Neue";
+  font-family: "dana";
   font-size: 40px;
   font-weight: 700;
   margin-bottom: 15px;
@@ -677,7 +677,7 @@ img {max-width:100%;height:auto}
     width: 100%;
 }
 .product-wrap:hover .product-img a img.secondary, .product-wrap:hover .product-img a img.primary {
-    transform: translate3d(-100%, 0px, 0px);
+    transform: translate3d(100%, 0px, 0px);
 }
 .product-icon {
 	position:absolute;
@@ -739,7 +739,7 @@ img {max-width:100%;height:auto}
 	background:#f25c27;
 	font-size:14px;
 	text-transform:uppercase;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 }
 .product-icon ul li a:hover span{
 	width:120px;
@@ -778,7 +778,8 @@ img {max-width:100%;height:auto}
 	transform:translateY(-50%);
 }
 .next-prev-style .owl-nav div {
-	right: -80px;
+	left: -80px;
+    right: auto;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -796,8 +797,8 @@ img {max-width:100%;height:auto}
 	opacity:.8;
 }
 .next-prev-style .owl-nav div.owl-next{
-	right:auto;
-	left:-80px;
+	left:auto;
+	right:-80px;
 }
 .sale,.new {
 	background: #f25c27 none repeat scroll 0 0;
@@ -808,7 +809,7 @@ img {max-width:100%;height:auto}
 	top: 0;
 	text-transform: uppercase;
 	font-weight: 600;
-	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 .new{
 	background:#d23802;
@@ -883,7 +884,7 @@ img {max-width:100%;height:auto}
 
 /*----------- related-product-area start ---------------*/
 .product-title{
-	font-family: 'Bebas Neue';
+	font-family: 'dana';
 	font-size:24px;
 	text-transform:uppercase;
 	font-weight:700;
@@ -1182,7 +1183,7 @@ a.readmore:hover{
 /*----------- news-letter-area start ---------------*/
 .newslatter-wrap h2{
 	font-size: 35px;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	text-transform:uppercase;
 	font-weight:700;
 	color:#fff;
@@ -1536,7 +1537,7 @@ a#scrollUp {
 }
 .bradcumb-wrap h2{
 	font-size:40px;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	letter-spacing:2px;
 }
 .bradcumb-wrap ul li{
@@ -2336,7 +2337,7 @@ a#scrollUp {
 	display:block;
 	color:#fff;
 	font-size:36px;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	margin:20px 0px;
 }
 .funfact-wrap  h3{
@@ -2463,7 +2464,7 @@ ol{
 /*----------- cart-area start --------------------*/
 .cart-title{
 	font-size:40px;
-	font-family: "Bebas Neue";
+	font-family: "dana";
 	text-align:center;
 	margin-bottom:30px;
 }
@@ -2802,7 +2803,7 @@ ol{
 .commingsoon-wrap .time-count {
   font-size: 80px;
   font-weight: 700;
-  font-family: "Bebas Neue";
+  font-family: "dana";
 }
 .commingsoon-wrap .cdown p {
   font-size: 24px;
