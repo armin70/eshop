@@ -1326,7 +1326,8 @@ a#scrollUp {
   color: #222;
 }
 .home2-header-area .logo h1 a {
-  color: #fff;
+    color: #FFA600;
+    font-size: 44px;
 }
 .home2-header-area .logo h1 span {
     color: #7d2505;
@@ -2831,4 +2832,16 @@ ol{
 .login-wrap{
 	padding:20px;
 	background:#fff;
+}
+/* custom */
+.pagination-wrap ul{
+	display: flex;
+	flex-direction: row-reverse;
+}
+.pagination-wrap{
+	display: flex;
+    justify-content: center;
+}
+.header-bottom-right img{
+	max-height: 50px;
 }

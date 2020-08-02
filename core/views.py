@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
-from .models import Item, Order, OrderItem, Category
+from .models import Item, Order, OrderItem, Category, ItemImages
 
 
 def index(req):
@@ -14,18 +14,30 @@ def index(req):
 
 class ProductsView(ListView):
     model = Item
+    paginate_by = 16
     template_name = "products.html"
 
 
-class ProductDetailsView(DetailView):
-    model = Item
-    template_name = "products_details.html"
+# class ProductDetailsView(DetailView):
+#     model = Item
+
+#     def get_queryset(self, **kwargs):
+#         context = super(ProductDetailsView, self).get_context_data(**kwargs)
+#         context['iamges'] = Item.objects.filter(pk=self.kwargs.get('pk'))
+#         return context
+#     template_name = "products_details.html"
+
+
+def ProductDetails(req, pk):
+    item = get_object_or_404(Item, id=pk)
+    photos = ItemImages.objects.filter(item=item)
+    return render(req, 'products_details.html', {"item": item, "photos": photos})
 
 
 def CategoryView(req, id):
     category = Category.objects.filter(id=id)
     category_items = Item.objects.filter(category=category[0])
-    return render(req, 'category.html', {"cats": category, "category_items": category_items})
+    return render(req, 'category.html', {"category": category[0], "category_items": category_items})
 
 
 def cart(req):

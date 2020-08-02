@@ -42,38 +42,26 @@
 					<div class="col-md-6 col-xs-12">
 						<div class="product-details-wrap">
 							<div class="product-details-active">
-								<div class="product-details-img" data-hash="one">
-									<img src="{{object.img_url.url}}" alt="" />
+							{% for p in photos %}
+								<div class="product-details-img" data-hash="{{'image_'}}{{forloop.counter0}}">
+									<img src="{{p.image.url}}" alt="" />
 								</div>
-								<div class="product-details-img" data-hash="two">
-									<img src="{{object.img_url.url}}" alt="" />
-								</div>
-								<div class="product-details-img" data-hash="three">
-									<img src="{{object.img_url.url}}" alt="" />
-								</div>
+							{% endfor %}
 							</div>
 							<div class="thamb-active">
+								{% for p in photos %}
 								<div class="product-details-thambnil">
-									<a href="#one">
-										<img src="{{object.img_url.url}}" alt="" />
+									<a href="#{{'image_'}}{{forloop.counter0}}">
+										<img src="{{p.image.url}}" alt="" />
 									</a>
 								</div>
-								<div class="product-details-thambnil">
-									<a href="#two">
-										<img src="{{object.img_url.url}}" alt="" />
-									</a>
-								</div>
-								<div class="product-details-thambnil">
-									<a href="#three">
-										<img src="{{object.img_url.url}}" alt="" />
-									</a>
-								</div>
+								{% endfor %}
 							</div>
 						</div>
 					</div>
 					<div class="col-md-6 col-xs-12">
 						<div class="product-details-conttent">
-							<h2>{{object.title}}</h2>
+							<h2>{{item.title}}</h2>
 							<div class="ratting">
 								<ul>
 									<li><i class="fa fa-star"></i></li>
