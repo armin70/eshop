@@ -1,4 +1,4 @@
----
+  ---
 deployment:
   tasks:
     - export DEPLOYPATH=/home/aramanim/public_html/ss
