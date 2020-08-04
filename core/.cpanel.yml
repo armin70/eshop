@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/aramanim/public_html/ss
+    - /bin/cp -r * $DEPLOYPATH
