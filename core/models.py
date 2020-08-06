@@ -11,7 +11,7 @@ from django.shortcuts import reverse
 
 class Category(models.Model):
     name = models.CharField(max_length=20)
-
+    image = models.ImageField(default="category")
     @staticmethod
     def get_all_categories():
         return Category.objects.all()
@@ -25,7 +25,9 @@ class Category(models.Model):
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
+    desc = models.TextField(blank=True)
     price = models.IntegerField()
+    timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, max_length=255, default=1)
@@ -80,3 +82,11 @@ class Order(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+class ContactUs(models.Model):
+    name = models.CharField(max_length=200, blank=True, null=True)
+    email = models.EmailField()
+    tel = models.CharField(max_length=17, blank=True, null=True)
+    subject = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField()

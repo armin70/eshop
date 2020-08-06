@@ -1,10 +1,11 @@
 from django.contrib import admin
 
-from .models import Item, OrderItem, Order, Category, ItemImages
+from .models import Item, OrderItem, Order, Category, ItemImages, ContactUs
 
 admin.site.register(OrderItem)
 admin.site.register(Order)
 admin.site.register(Category)
+admin.site.register(ContactUs)
 
 
 class ItemImageAdmin(admin.StackedInline):
@@ -19,6 +20,6 @@ class ItemAdmin(admin.ModelAdmin):
         model = Item
 
 
-@admin.register(ItemImages)
-class ItemImageAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(ItemImages)
+# class ItemImageAdmin(admin.ModelAdmin):
+#     pass

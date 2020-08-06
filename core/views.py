@@ -1,19 +1,36 @@
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from .models import Item, Order, OrderItem, Category, ItemImages
+from .forms import ContactUsForm
 
 
 def index(req):
     context = {
-        'items': Item.objects.all(),
+        'items': Item.objects.all()[:10],
     }
     return render(req, "index.html", context)
 
 
+def contactUs(req):
+    form = ContactUsForm(req.POST, None)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(req, "contact.html", context)
+
+
+def about(req):
+    return render(req, "about.html")
+
+
 class ProductsView(ListView):
     model = Item
+    ordering = "-timestamp"
     paginate_by = 16
     template_name = "products.html"
 
@@ -36,8 +53,12 @@ def ProductDetails(req, pk):
 
 def CategoryView(req, id):
     category = Category.objects.filter(id=id)
-    category_items = Item.objects.filter(category=category[0])
-    return render(req, 'category.html', {"category": category[0], "category_items": category_items})
+    category_items_list = Item.objects.filter(
+        category=category[0]).order_by("-timestamp")
+    paginator = Paginator(category_items_list, 12)
+    page_number = req.GET.get('page')
+    category_items = paginator.get_page(page_number)
+    return render(req, 'category.html', {"category": category[0], "category_items": category_items, "page_number": page_number})
 
 
 def cart(req):

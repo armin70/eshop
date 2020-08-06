@@ -53,14 +53,14 @@
 
 	// slider-active
 	$('.slider-active').owlCarousel({
-		smartSpeed: 1000,
+		smartSpeed: 1500,
 		margin: 0,
 		nav: true,
 		autoplay: true,
-		autoplayTimeout: 3000,
+		autoplayTimeout: 5000,
 		rtl: true,
 		loop: true,
-		navText: ['<i class="fa fa-angle-left"></i> PRE', 'Next <i class="fa fa-angle-right"></i>'],
+		navText: ['<i class="fa fa-angle-left"></i>', ' <i class="fa fa-angle-right"></i>'],
 		responsive: {
 			0: {
 				items: 1
@@ -398,7 +398,30 @@
 			}
 		}
 	});
-
+	$('.cat-wrapper').owlCarousel({
+		smartSpeed: 1000,
+		margin: 0,
+		loop: true,
+		autoplay: true,
+		margin: 10,
+		rtl: true,
+		nav: true,
+		navText: ['<i class="fa fa-angle-left"></i>', '<i class="fa fa-angle-right"></i>'],
+		responsive: {
+			0: {
+				items: 1
+			},
+			450: {
+				items: 2
+			},
+			678: {
+				items: 3
+			},
+			1000: {
+				items: 5
+			}
+		}
+	});
 	// thamb-active
 	$(".thamb-active").owlCarousel({
 		loop: true,

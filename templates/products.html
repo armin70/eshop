@@ -8,11 +8,11 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="bradcumb-wrap">
-							<h2>Shop Full Width</h2>
+							<h2>فروشگاه</h2>
 							<ul>
-								<li><a href="index.html">Home</a></li>
+								<li><a href="/">صفحه اصلی</a></li>
 								<li>|</li>
-								<li>Shop</li>
+								<li>فروشگاه</li>
 							</ul>
 						</div>
 					</div>
@@ -34,10 +34,10 @@
 											<div class="product-wrap mb-30">
 												<div class="product-img">
 													<a href="{{item.get_absolute_url}}">
-														<img class="primary" src="{{item.img_url.url}}" alt="">
+														<img  src="{{item.img_url.url}}" alt="">
 														{% comment %} <img class="secondary" src="img/product/2.jpg" alt=""> {% endcomment %}
 													</a>
-													<div class="product-icon">
+													{% comment %} <div class="product-icon">
 														<ul>
 															<li>
 																<a href="cart.html">
@@ -58,12 +58,12 @@
 																</a>
 															</li>
 														</ul>
-													</div>
-													<span class="sale">{{item.category}}</span>
+													</div> {% endcomment %}
+													{% comment %} <span class="sale">{{item.category}}</span> {% endcomment %}
 												</div>
 												<div class="product-content text-center">
 													<a href="{{item.get_absolute_url}}">{{item.title}}</a>
-													<div class="ratting">
+													{% comment %} <div class="ratting">
 														<ul>
 															<li><i class="fa fa-star"></i></li>
 															<li><i class="fa fa-star"></i></li>
@@ -71,8 +71,8 @@
 															<li><i class="fa fa-star-half-o"></i></li>
 															<li><i class="fa fa-star-o"></i></li>
 														</ul>
-													</div>
-													<span>{{item.price}}</span>
+													</div> {% endcomment %}
+													{% comment %} <span>{{item.price}}</span> {% endcomment %}
 													{% comment %} <del>$30.00</del> {% endcomment %}
 												</div>
 											</div>

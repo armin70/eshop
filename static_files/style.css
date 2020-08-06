@@ -274,7 +274,6 @@ img {max-width:100%;height:auto}
   font-weight: 700;
   margin-bottom: 0;
   text-transform: uppercase;
-  letter-spacing: 2px;
 }
 .logo h1 a{
 	color:#222;
@@ -309,6 +308,7 @@ img {max-width:100%;height:auto}
 	padding:0px;
 	margin-bottom:5px;
 	display:block;
+	text-align: right;
 }
 .mainmenu ul li > ul li a{
 	text-transform:capitalize;
@@ -543,7 +543,6 @@ img {max-width:100%;height:auto}
 	font-weight: 700;
 	margin-bottom: 20px;
 	text-transform: uppercase;
-	letter-spacing: 2px;
 }
 .slider-content p{
 	font-size:18px;
@@ -632,7 +631,6 @@ img {max-width:100%;height:auto}
   padding-bottom: 15px;
   position: relative;
   text-transform: capitalize;
-  letter-spacing: 1px;
 }
 .section-title h2::before, .section-title h2::after{
 	background: #f25c27 none repeat scroll 0 0;
@@ -1259,6 +1257,7 @@ a.readmore:hover{
   font-weight: 600;
   text-transform: uppercase;
   margin-bottom: 25px;
+  color:white;
 }
 .footer-widget .logo {
   padding: 0;
@@ -1539,7 +1538,6 @@ a#scrollUp {
 .bradcumb-wrap h2{
 	font-size:40px;
 	font-family: "dana";
-	letter-spacing:2px;
 }
 .bradcumb-wrap ul li{
 	display:inline-block;
@@ -1817,7 +1815,7 @@ a#scrollUp {
   color: #fff;
   font-size: 16px;
   height: 100%;
-  right: 0;
+  left: 0;
   line-height: 140px;
   position: absolute;
   text-align: center;
@@ -1829,8 +1827,8 @@ a#scrollUp {
 	background:#f25c27;
 }
 .thamb-active .owl-nav div.owl-next{
-	right:auto;
-	left:0;
+	left:auto;
+	right:0;
 }
 .thamb-img{
 	margin:5px 0px;
@@ -2265,7 +2263,7 @@ a#scrollUp {
   background: #f25c27;
   color: #fff;
   height: 30px;
-  right: 20px;
+  left: 20px;
   line-height: 30px;
   position: absolute;
   text-align: center;
@@ -2274,8 +2272,8 @@ a#scrollUp {
   width: 30px;
 }
 .about-active .owl-nav div.owl-next{
-	right:auto;
-	left:20px;
+	left:auto;
+	right:20px;
 }
 .about-area .faq-wrap{
 	padding:20px;
@@ -2644,7 +2642,6 @@ ol{
 	position: relative;
 }
 .contact-wrapper {
-  margin-top: -190px;
   position: relative;
   z-index: 9;
 }
@@ -2652,7 +2649,7 @@ ol{
 	background-color:#f25c27;
 	padding:40px 60px;
 	float: right;
-	width:25%;
+	width:50%;
 	color:#fff;
 }
 .contact-item i{
@@ -2844,4 +2841,41 @@ ol{
 }
 .header-bottom-right img{
 	max-height: 50px;
+}
+.cat-content span{
+	z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    border-radius: 10px 10px 0 0;
+    font-size: 31px;
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(255,255,255,.6);
+}
+.cat-content{
+	padding-top:15px;
+}
+.cat-content:hover a{
+	opacity: 1;
+	transition-duration: .5s;
+}
+.categories{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+.contact i,.contact {
+	color: white;
+}
+.contact i:hover{
+	color:#F25C27;
+	transition-duration: .7s;
+}
+footer a{
+	color:white;
 }

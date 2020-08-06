@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>EcomoShop || Home One</title>
+        <title>فروشگاه آبادیس || فروش تیشرت خاص</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 		
@@ -106,8 +106,8 @@
 									{% endfor %}
 										</ul>
 									</li>
-							<li class=""><a href="/">تماس با ما </a></i>
-							<li class=""><a href="/">درباره ما </a></i>
+							<li class=""><a href="/contact">ارتباط با ما </a></i>
+							<li class=""><a href="/about">درباره ما </a></i>
 								</ul>
 							</div>
 						</div>
@@ -137,61 +137,47 @@
 								<div class="logo">
 									<h1><a href="/"><img src="{% static '/img/abadis.png' %}"/></h1>
 								</div>
-								<p>We're releasing 2 premium Magento templates each month. Every template is designed with different styles and targeted.</p>
 							</div>
 						</div>
 						<div class="col-md-2 col-sm-3">
 							<div class="footer-widget">
-								<h2>INFORMATION</h2>
+								<h2>دسته بندی محصولات</h2>
 								<div class="footer-menu">
 									<ul>
-										<li><a href="#">About Us </a></li>
-										<li><a href="#">Delivery</a></li>
-										<li><a href="#">Discount</a></li>
-										<li><a href="#">News</a></li>
-										<li><a href="#">Sitemap</a></li>
+									{% for cat in cats %}
+										<li><a href="/categories/{{cat.id}}">{{cat}}</a></li>
+									{% endfor %}
+									
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2 col-sm-3">
+						<div class="col-md-3 col-sm-3">
 							<div class="footer-widget">
-								<h2>QUICK LINKS</h2>
+								<h2>لینک های ضروری</h2>
 								<div class="footer-menu">
 									<ul>
-										<li><a href="#">Account</a></li>
-										<li><a href="#">Login</a></li>
-										<li><a href="#">Wishlist</a></li>
-										<li><a href="#">Cart</a></li>
-										<li><a href="#">Checkout</a></li>
+										<li><a href="/about">درباره ما</a></li>
+										<li><a href="/contact">ارتباط با ما</a></li>
+										<li><a href="/">صفحه اصلی</a></li>
+										<li><a href="/products">فروشگاه</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-						<div class="col-md-2 col-sm-4">
+		
+						<div class="col-md-4 col-sm-8">
 							<div class="footer-widget">
-								<h2>CUSTOMER CARE</h2>
-								<div class="footer-menu">
-									<ul>
-										<li><a href="#">Our Blog</a></li>
-										<li><a href="#">Search</a></li>
-										<li><a href="#">Contact</a></li>
-										<li><a href="#">Policy</a></li>
-										<li><a href="#">Service</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 col-sm-8">
-							<div class="footer-widget">
-								<h2>Contact</h2>
+								<h2>راه های ارتباطی</h2>
 								<div class="contact">
 									<ul>
-										<li>1 Wintergreen Dr. Huntley IL 60142, Usa</li>
-										<li>+05 845 4174</li>
-										<li>+05 845 4174</li>
-										<li>ecomoshop@gmail.com</li>
-										<li>ecomoshop125@gmail.com</li>
+										<li>
+										<a href="https://www.instagram.com/abadis_tshirt/"><i class="fa fa-instagram"></i></a>
+										<a href="https://t.me/abadistshirt"><i class="fa fa-telegram"></i></a>
+										<a href="https://wa.me/00989109388289"><i class="fa fa-whatsapp"></i></a>
+										</li>
+										<li><a href="tel:09199108289">09199108289<a></li>
+										<li><a href="mailto:info@abadis-shop.ir">info@abadis-shop.ir<a></li>
 									</ul>
 								</div>
 							</div>
@@ -202,16 +188,9 @@
 			<div class="footer-bottom bg-1">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-6 col-sm-6">
+						<div class="col-md-12 col-sm-12">
 							<div class="copyright">
-								<p>Copyright &copy;2017 <a href="https://irs-soft.com">irs-Soft</a> All Rights Reserved</p>
-							</div>
-						</div>
-						<div class="col-md-6 col-sm-6">
-							<div class="payment-img text-right">
-								<a href="#">
-									<img src="{% static 'img/payment.png' %}" alt="" />
-								</a>
+								<p>تمام حقوق مادی و معنوی این سایت متعلق به فروشگاه آبادیس میباشد</p>
 							</div>
 						</div>
 					</div>
