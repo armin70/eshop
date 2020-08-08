@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
-from .models import Item, Order, OrderItem, Category, ItemImages
+from .models import Item, Category, ItemImages, Tag
 from .forms import ContactUsForm
 
 
@@ -61,54 +61,64 @@ def CategoryView(req, id):
     return render(req, 'category.html', {"category": category[0], "category_items": category_items, "page_number": page_number})
 
 
-def cart(req):
-
-    return render(req, "cart.html")
-
-
-def add_to_cart(req, id):
-    item = get_object_or_404(Item, id=id)
-    order_item, created = OrderItem.objects.get_or_create(
-        item=item,
-        user=req.user,
-        ordered=False
-    )
-    order_qs = Order.objects.filter(user=req.user, ordered=False)
-    if order_qs.exists():
-        order = order_qs[0]
-        if order.items.filter(item__id=item.id).exists():
-            order_item.quantity += 1
-            order_item.save()
-            messages.info(req, "this item updated")
-        else:
-            messages.info(req, "this item added")
-            order.items.add(order_item)
-    else:
-        ordered_date = timezone.now()
-        order = Order.objects.create(user=req.user, ordered_date=ordered_date)
-        order.items.add(order_item)
-        messages.info(req, "this item added")
-    return redirect("core:products_details", pk=id)
+def TagView(req, id):
+    tag = Tag.objects.filter(id=id)
+    tag_items_list = Item.objects.filter(
+        label=tag[0]).order_by("-timestamp")
+    paginator = Paginator(tag_items_list, 12)
+    page_number = req.GET.get('page')
+    tag_items = paginator.get_page(page_number)
+    return render(req, 'tag.html', {"tag": tag[0], "tag_items": tag_items, "page_number": page_number})
 
 
-def remove_from_cart(req, id):
-    item = get_object_or_404(Item, id=id)
-    order_qs = Order.objects.filter(user=req.user, ordered=False)
-    if order_qs.exists():
-        order = order_qs[0]
-        if order.items.filter(item__id=item.id).exists():
-            order_item = OrderItem.objects.filter(
-                item=item,
-                user=req.user,
-                ordered=False
-            )[0]
-            order.items.remove(id)
-            messages.info(req, "this item removed")
-            return redirect("core:products_details", pk=id)
-        else:
-            messages.info(req, "this item was not in your cart")
-            return redirect("core:products_details", pk=id)
+# def cart(req):
 
-    else:
-        messages.info(req, "you do not have an order")
-        return redirect("core:products_details", pk=id)
+#     return render(req, "cart.html")
+
+
+# def add_to_cart(req, id):
+#     item = get_object_or_404(Item, id=id)
+#     order_item, created = OrderItem.objects.get_or_create(
+#         item=item,
+#         user=req.user,
+#         ordered=False
+#     )
+#     order_qs = Order.objects.filter(user=req.user, ordered=False)
+#     if order_qs.exists():
+#         order = order_qs[0]
+#         if order.items.filter(item__id=item.id).exists():
+#             order_item.quantity += 1
+#             order_item.save()
+#             messages.info(req, "this item updated")
+#         else:
+#             messages.info(req, "this item added")
+#             order.items.add(order_item)
+#     else:
+#         ordered_date = timezone.now()
+#         order = Order.objects.create(user=req.user, ordered_date=ordered_date)
+#         order.items.add(order_item)
+#         messages.info(req, "this item added")
+#     return redirect("core:products_details", pk=id)
+
+
+# def remove_from_cart(req, id):
+#     item = get_object_or_404(Item, id=id)
+#     order_qs = Order.objects.filter(user=req.user, ordered=False)
+#     if order_qs.exists():
+#         order = order_qs[0]
+#         if order.items.filter(item__id=item.id).exists():
+#             order_item = OrderItem.objects.filter(
+#                 item=item,
+#                 user=req.user,
+#                 ordered=False
+#             )[0]
+#             order.items.remove(id)
+#             messages.info(req, "this item removed")
+#             return redirect("core:products_details", pk=id)
+#         else:
+#             messages.info(req, "this item was not in your cart")
+#             return redirect("core:products_details", pk=id)
+
+#     else:
+#         messages.info(req, "you do not have an order")
+#         return redirect("core:products_details", pk=id)

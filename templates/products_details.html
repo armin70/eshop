@@ -1,92 +1,101 @@
 {% extends "base.html" %}
 {% block content %}
 
-        <!-- .breadcumb-area start -->
-     	<div class="bradcumb-area black-opacity bg-img-1">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="bradcumb-wrap">
-							<h2>{{item.title}}</h2>
-							<ul>
-								<li><a href="/">صفحه اصلی</a></li>
-								<li>|</li>
-								<li>فروشگاه</li>
-								<li>|</li>
-								<li>{{item.title}}</li>
-							</ul>
-						</div>
-					</div>
+<!-- .breadcumb-area start -->
+<div class="bradcumb-area black-opacity bg-img-1">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="bradcumb-wrap">
+					<h2>{{item.title}}</h2>
+					<ul>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>|</li>
+						<li>فروشگاه</li>
+						<li>|</li>
+						<li>{{item.title}}</li>
+					</ul>
 				</div>
 			</div>
 		</div>
-        <!-- .breadcumb-area end -->
-		
-		<!-- product-details-area start -->
-		<div class="product-details-area ptb-100 bg-4">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6 col-xs-12">
-						<div class="product-details-wrap">
-							<div class="product-details-active">
-							{% for p in photos %}
-								<div class="product-details-img" data-hash="{{'image_'}}{{forloop.counter0}}">
-									<img src="{{p.image.url}}" alt="" />
-								</div>
-							{% endfor %}
-							</div>
-							<div class="thamb-active">
-								{% for p in photos %}
-								<div class="product-details-thambnil">
-									<a href="#{{'image_'}}{{forloop.counter0}}">
-										<img src="{{p.image.url}}" alt="" />
-									</a>
-								</div>
-								{% endfor %}
-							</div>
+	</div>
+</div>
+<!-- .breadcumb-area end -->
+
+<!-- product-details-area start -->
+<div class="product-details-area ptb-100 bg-4">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-xs-12">
+				<div class="product-details-wrap">
+					<div class="product-details-active">
+						{% for p in photos %}
+						<div class="product-details-img" data-hash="{{'image_'}}{{forloop.counter0}}">
+							<img src="{{p.image.url}}" alt="" />
 						</div>
+						{% endfor %}
 					</div>
-					<div class="col-md-6 col-xs-12">
-						<div class="product-details-conttent">
-							<h2>{{item.title}}</h2>
-						
-							{% comment %} <div class="stock">
-								<strong>Aveilable:</strong>
-								<span>In Stock</span>
-							</div> {% endcomment %}
-							<p>{{item.desc}}</p>
-							{% comment %} <ul>
-								<li>4.5 inch HD Touch Screen (1280 x 720)</li>
-								<li>Android 4.4 KitKat OS</li>
-								<li>1.4 GHz Quad Core™ Processor</li>
-								<li>20 MP front and 28</li>
-								<li>megapixel CMOS rear camera</li>
-							</ul> {% endcomment %}
-							{% comment %} <span>{{item.price}}</span> {% endcomment %}
-							{% comment %} <del>$95.00</del> {% endcomment %}
-							{% comment %} <div class="quality-wrap">
-								<strong>QTY :</strong>
-								<input type="number"/>
-								<a href="{{object.get_add_to_cart_url}}"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-								<a href="{{object.get_remove_from_cart_url}}"><i class="fa fa-shopping-cart"></i> remove from cart</a>
-							</div> {% endcomment %}
-							{% comment %} <div class="share-wrap">
-								<ul>
-									<li class="share">Share</li>
-									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-									<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-									<li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
-									<li><a href="#"><i class="fa fa-rss"></i></a></li>
-								</ul>
-							</div> {% endcomment %}
+					<div class="thamb-active">
+						{% for p in photos %}
+						<div class="product-details-thambnil">
+							<a href="#{{'image_'}}{{forloop.counter0}}">
+								<img src="{{p.image.url}}" alt="" />
+							</a>
 						</div>
+						{% endfor %}
 					</div>
 				</div>
-			
+			</div>
+			<div class="col-md-6 col-xs-12">
+				<div class="product-details-conttent">
+					<h2>{{item.title}}</h2>
+
+					{% for t in item.label.all %}
+					<p>{{t}}</p>
+					<p>{{t.id}}</p>
+					{% endfor %}
+
+					{% for price in item.price.all %}
+					<p>{{price.title}}</p>
+					<p>{{price.price}}</p>
+					{% endfor %}
+					{% comment %} <div class="stock">
+						<strong>Aveilable:</strong>
+						<span>In Stock</span>
+					</div> {% endcomment %}
+					<p>{{item.desc}}</p>
+					{% comment %} <ul>
+						<li>4.5 inch HD Touch Screen (1280 x 720)</li>
+						<li>Android 4.4 KitKat OS</li>
+						<li>1.4 GHz Quad Core™ Processor</li>
+						<li>20 MP front and 28</li>
+						<li>megapixel CMOS rear camera</li>
+					</ul> {% endcomment %}
+					{% comment %} <span>{{item.price}}</span> {% endcomment %}
+					{% comment %} <del>$95.00</del> {% endcomment %}
+					{% comment %} <div class="quality-wrap">
+						<strong>QTY :</strong>
+						<input type="number" />
+						<a href="{{object.get_add_to_cart_url}}"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+						<a href="{{object.get_remove_from_cart_url}}"><i class="fa fa-shopping-cart"></i> remove from
+							cart</a>
+					</div> {% endcomment %}
+					{% comment %} <div class="share-wrap">
+						<ul>
+							<li class="share">Share</li>
+							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="#"><i class="fa fa-pinterest-p"></i></a></li>
+							<li><a href="#"><i class="fa fa-rss"></i></a></li>
+						</ul>
+					</div> {% endcomment %}
+				</div>
 			</div>
 		</div>
 
-		
+	</div>
+</div>
+
+
 {% endblock content %}
-	

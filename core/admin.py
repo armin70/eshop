@@ -1,10 +1,11 @@
+from .models import Item, Category, ItemImages, ContactUs, Tag, ItemPrice
 from django.contrib import admin
 
-from .models import Item, OrderItem, Order, Category, ItemImages, ContactUs
 
-admin.site.register(OrderItem)
-admin.site.register(Order)
+# admin.site.register(OrderItem)
+# admin.site.register(Order)
 admin.site.register(Category)
+admin.site.register(ItemPrice)
 admin.site.register(ContactUs)
 
 
@@ -23,3 +24,5 @@ class ItemAdmin(admin.ModelAdmin):
 # @admin.register(ItemImages)
 # class ItemImageAdmin(admin.ModelAdmin):
 #     pass
+
+admin.site.register(Tag)

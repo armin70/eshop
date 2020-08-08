@@ -1,6 +1,7 @@
 env
 **/*.pyc
 **/__pycache__
+lib/
 media
 .DS_Store
 *.sqlite3
@@ -11,3 +12,5 @@ media
 !.travis.yml
 /.env
 /.vscode
+/Lib/site-packages
+/Lib/site-packages/django_allauth-0.42.0-py3.8.egg-info

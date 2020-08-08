@@ -1,7 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
-
+from multiselectfield import MultiSelectField
 # LABEL_CHOICES = (
 #     ('lbl1', 'lbl_1'),
 #     ('lbl2', 'lbl_2'),
@@ -20,18 +20,43 @@ class Category(models.Model):
         return self.name
 
 
+class Tag(models.Model):
+    name = models.CharField(max_length=250)
+    @staticmethod
+    def get_all_tags():
+        return Tag.objects.all()
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'تگ'
+        verbose_name_plural = 'تگ ها'
+
 # choices = Category.objects.all().values_list('name', 'name')
+
+
+class ItemPrice(models.Model):
+    title = models.CharField(max_length=250)
+    price = models.IntegerField()
+
+    @staticmethod
+    def get_all_tags():
+        return ItemPrice.objects.all()
+
+    def __str__(self):
+        return self.title
 
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
     desc = models.TextField(blank=True)
-    price = models.IntegerField()
+    price = models.ManyToManyField(ItemPrice, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, max_length=255, default=1)
-    # label = models.CharField(choices=LABEL_CHOICES, max_length=5)
+    label = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self):
         return self.title
@@ -61,27 +86,27 @@ class ItemImages (models.Model):
         return self.item.title
 
 
-class OrderItem(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
-    item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    quantity = models.IntegerField(default=1)
-    ordered = models.BooleanField(default=False)
+# class OrderItem(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL,
+#                              on_delete=models.CASCADE)
+#     item = models.ForeignKey(Item, on_delete=models.CASCADE)
+#     quantity = models.IntegerField(default=1)
+#     ordered = models.BooleanField(default=False)
 
-    def __str__(self):
-        return f"{self.quantity} of {self.item.title}"
+#     def __str__(self):
+#         return f"{self.quantity} of {self.item.title}"
 
 
-class Order(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL,
-                             on_delete=models.CASCADE)
-    items = models.ManyToManyField(OrderItem)
-    start_date = models.DateTimeField(auto_now_add=True)
-    ordered_date = models.DateTimeField()
-    ordered = models.BooleanField(default=False)
+# class Order(models.Model):
+#     user = models.ForeignKey(settings.AUTH_USER_MODEL,
+#                              on_delete=models.CASCADE)
+#     items = models.ManyToManyField(OrderItem)
+#     start_date = models.DateTimeField(auto_now_add=True)
+#     ordered_date = models.DateTimeField()
+#     ordered = models.BooleanField(default=False)
 
-    def __str__(self):
-        return self.user.username
+#     def __str__(self):
+#         return self.user.username
 
 
 class ContactUs(models.Model):
