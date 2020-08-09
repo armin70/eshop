@@ -28,7 +28,7 @@ def addToCart(request, id):
         if form.is_valid():
             if control == 1:
                 data = ShopCart.objects.get(
-                    slug=f"{request.POST['model']}_{id}")
+                    slug=f"{request.POST['model']}_{request.POST['size']}_{id}")
                 data.quantity += form.cleaned_data['quantity']
                 data.model = form.cleaned_data['model']
                 data.price = form.cleaned_data['price']
