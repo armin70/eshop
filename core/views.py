@@ -3,13 +3,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
-from .models import Item, Category, ItemImages, Tag
+from .models import Product, Category, ProductImages, Tag
 from .forms import ContactUsForm
 
 
 def index(req):
     context = {
-        'items': Item.objects.all()[:10],
+        'items': Product.objects.all()[:10],
     }
     return render(req, "index.html", context)
 
@@ -29,7 +29,7 @@ def about(req):
 
 
 class ProductsView(ListView):
-    model = Item
+    model = Product
     ordering = "-timestamp"
     paginate_by = 16
     template_name = "products.html"
@@ -46,29 +46,29 @@ class ProductsView(ListView):
 
 
 def ProductDetails(req, pk):
-    item = get_object_or_404(Item, id=pk)
-    photos = ItemImages.objects.filter(item=item)
-    return render(req, 'products_details.html', {"item": item, "photos": photos})
+    product = get_object_or_404(Product, id=pk)
+    photos = ProductImages.objects.filter(product=product)
+    return render(req, 'products_details.html', {"item": product, "photos": photos})
 
 
 def CategoryView(req, id):
     category = Category.objects.filter(id=id)
-    category_items_list = Item.objects.filter(
+    category_products_list = Product.objects.filter(
         category=category[0]).order_by("-timestamp")
-    paginator = Paginator(category_items_list, 12)
+    paginator = Paginator(category_products_list, 12)
     page_number = req.GET.get('page')
-    category_items = paginator.get_page(page_number)
-    return render(req, 'category.html', {"category": category[0], "category_items": category_items, "page_number": page_number})
+    category_products = paginator.get_page(page_number)
+    return render(req, 'category.html', {"category": category[0], "category_items": category_products, "page_number": page_number})
 
 
 def TagView(req, id):
     tag = Tag.objects.filter(id=id)
-    tag_items_list = Item.objects.filter(
+    tag_products_list = Product.objects.filter(
         label=tag[0]).order_by("-timestamp")
-    paginator = Paginator(tag_items_list, 12)
+    paginator = Paginator(tag_prodcuts_list, 12)
     page_number = req.GET.get('page')
-    tag_items = paginator.get_page(page_number)
-    return render(req, 'tag.html', {"tag": tag[0], "tag_items": tag_items, "page_number": page_number})
+    tag_products = paginator.get_page(page_number)
+    return render(req, 'tag.html', {"tag": tag[0], "tag_items": tag_products, "page_number": page_number})
 
 
 # def cart(req):

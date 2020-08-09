@@ -1879,7 +1879,7 @@ a#scrollUp {
 	padding-right:10px;
 	margin:0px 20px;
 }
-.quality-wrap a {
+.quality-wrap a,.quality-wrap button {
 	background: #f1f1f1;
 	border-radius: 3px;
 	display: inline-block;
@@ -1887,8 +1887,10 @@ a#scrollUp {
 	text-align: center;
 	text-transform: uppercase;
 	font-weight:600;
+	outline: none;
+	border: none;
 }
-.quality-wrap a:hover{
+.quality-wrap a:hover,.quality-wrap button:hover{
 	background:#f25c27;
 	color:#fff;
 }
@@ -2878,4 +2880,151 @@ ol{
 }
 footer a{
 	color:white;
+}
+
+/* color selector */
+
+.colors input[type="radio"] {
+	display: none;
+}
+.colors input[type="radio"]:checked + label span {
+	transform: scale(1.25);
+}
+.colors input[type="radio"]:checked + label .red {
+	border: 2px solid #711313;
+}
+.colors input[type="radio"]:checked + label .orange {
+	border: 2px solid #873a08;
+}
+.colors input[type="radio"]:checked + label .yellow {
+	border: 2px solid #816102;
+}
+.colors input[type="radio"]:checked + label .olive {
+	border: 2px solid #505a0b;
+}
+.colors input[type="radio"]:checked + label .green {
+	border: 2px solid #0e4e1d;
+}
+.colors input[type="radio"]:checked + label .teal {
+	border: 2px solid #003633;
+}
+.colors input[type="radio"]:checked + label .blue {
+	border: 2px solid #103f62;
+}
+.colors input[type="radio"]:checked + label .violet {
+	border: 2px solid #321a64;
+}
+.colors input[type="radio"]:checked + label .purple {
+	border: 2px solid #501962;
+}
+.colors input[type="radio"]:checked + label .pink {
+	border: 2px solid #851554;
+}
+.colors input[type="radio"]:checked + label .black {
+	border: 2px solid #646464;
+}
+.colors input[type="radio"]:checked + label .white {
+	border: 2px solid #3f3f3f;
+}
+.colors input[type="radio"]:checked + label .price {
+	display: block;
+}
+.colors label {
+	display: inline-block;
+	width: 25px;
+	height: 25px;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.colors label:hover span {
+	transform: scale(1.25);
+}
+.colors label span {
+	display: block;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.2s ease-in-out;
+}
+.colors label span.red {
+	background: #db2828;
+}
+.colors label span.orange {
+	background: #f2711c;
+}
+.colors label span.yellow {
+	background: #fbbd08;
+}
+.colors label span.olive {
+	background: #b5cc18;
+}
+.colors label span.green {
+	background: #21ba45;
+}
+.colors label span.teal {
+	background: #00b5ad;
+}
+.colors label span.blue {
+	background: #2185d0;
+}
+.colors label span.violet {
+	background: #6435c9;
+}
+.colors label span.purple {
+	background: #a333c8;
+}
+.colors label span.pink {
+	background: #e03997;
+}
+.colors label span.black {
+	background: #000000;
+}
+.colors label span.white {
+	background: #ffffff;
+	border: 1px solid #cecece
+}
+
+
+/* product detail */
+.colors{
+	position: relative;
+    padding-bottom: 33px;
+}
+.radiobtn{
+    display: inline-block;
+    margin-top: 5px;
+}
+.radiobtn>span{
+	margin: 0;
+}
+.radiobtn .second{
+	position: absolute;
+	right: 0;
+	z-index: -1;
+}
+.radiobtn .second input{
+	z-index: 2;
+}
+.price {
+    position: absolute;
+    right: 0;
+	top: 45px;
+	display: none;
+}
+
+.size{
+	display: flex;
+}
+.size-value label {
+    color: white;
+    background: #f25c27;
+    padding: 5px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.size-value input {
+    display: none;
+}
+.size-value input:checked + label {
+	color: #f25c27;
+    background: #000000;
 }

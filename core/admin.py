@@ -1,24 +1,24 @@
-from .models import Item, Category, ItemImages, ContactUs, Tag, ItemPrice
+from .models import Product, Category, ProductImages, ContactUs, Tag, ProductType
 from django.contrib import admin
 
 
 # admin.site.register(OrderItem)
 # admin.site.register(Order)
 admin.site.register(Category)
-admin.site.register(ItemPrice)
+admin.site.register(ProductType)
 admin.site.register(ContactUs)
 
 
-class ItemImageAdmin(admin.StackedInline):
-    model = ItemImages
+class ProductImageAdmin(admin.StackedInline):
+    model = ProductImages
 
 
-@admin.register(Item)
-class ItemAdmin(admin.ModelAdmin):
-    inlines = [ItemImageAdmin]
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    inlines = [ProductImageAdmin]
 
     class meta:
-        model = Item
+        model = Product
 
 
 # @admin.register(ItemImages)

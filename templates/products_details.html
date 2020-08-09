@@ -50,7 +50,7 @@
 				<div class="product-details-conttent">
 					<h2>{{item.title}}</h2>
 
-					{% for t in item.label.all %}
+					{% comment %} {% for t in item.label.all %}
 					<p>{{t}}</p>
 					<p>{{t.id}}</p>
 					{% endfor %}
@@ -58,12 +58,55 @@
 					{% for price in item.price.all %}
 					<p>{{price.title}}</p>
 					<p>{{price.price}}</p>
-					{% endfor %}
+					{% endfor %} {% endcomment %}
 					{% comment %} <div class="stock">
 						<strong>Aveilable:</strong>
 						<span>In Stock</span>
 					</div> {% endcomment %}
 					<p>{{item.desc}}</p>
+					<form action="/order/addtocart/{{item.id}}/" method="POST">
+						{% csrf_token %}
+						<div class="colors">
+							{% for p in item.model.all %}
+							<span class="radiobtn">
+								<input type="radio" name="model" value="{{p.title}}" id="{{p.title}}">
+								<label for="{{p.title}}"><span class="{{p.title}}"></span>
+									<b class="price">{{p.price}} تومان</b></label>
+								<input class="second" type="radio" name="price" value="{{p.price}}" id="{{p.price}}">
+								<label class="second" for="{{p.price}}"><span class="{{p.title}}"></span></label>
+							</span>
+							{% endfor %}
+
+						</div>
+						<div class="size">
+							<span class="size-value">
+								<input name="size" type="radio" value="S" id="S">
+								<label for="S">S</label>
+							</span>
+							<span class="size-value">
+								<input name="size" checked type="radio" value="M" id="M">
+								<label for="M">M</label>
+							</span>
+							<span class="size-value">
+								<input name="size" type="radio" value="L" id="L">
+								<label for="L">L</label>
+							</span>
+							<span class="size-value">
+								<input name="size" type="radio" value="XL" id="XL">
+								<label for="XL">XL</label>
+							</span>
+							<span class="size-value">
+								<input name="size" type="radio" value="XXL" id="XXL">
+								<label for="XXL">XXL</label>
+							</span>
+						</div>
+						{% comment %} <input name="quantity" type="number" value="1" min="1"> {% endcomment %}
+						<div class="quality-wrap">
+							<strong>تعداد :</strong>
+							<input name="quantity" type="number" value="1" min="1">
+							<button type="submit"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</button>
+						</div>
+					</form>
 					{% comment %} <ul>
 						<li>4.5 inch HD Touch Screen (1280 x 720)</li>
 						<li>Android 4.4 KitKat OS</li>

@@ -2,11 +2,6 @@ from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
 from multiselectfield import MultiSelectField
-# LABEL_CHOICES = (
-#     ('lbl1', 'lbl_1'),
-#     ('lbl2', 'lbl_2'),
-#     ('lbl3', 'lbl_3'),
-# )
 
 
 class Category(models.Model):
@@ -36,22 +31,22 @@ class Tag(models.Model):
 # choices = Category.objects.all().values_list('name', 'name')
 
 
-class ItemPrice(models.Model):
+class ProductType(models.Model):
     title = models.CharField(max_length=250)
     price = models.IntegerField()
-
+    size = models.CharField(max_length=5, default="M")
     @staticmethod
     def get_all_tags():
-        return ItemPrice.objects.all()
+        return ProductType.objects.all()
 
     def __str__(self):
         return self.title
 
 
-class Item(models.Model):
+class Product(models.Model):
     title = models.CharField(max_length=100)
     desc = models.TextField(blank=True)
-    price = models.ManyToManyField(ItemPrice, blank=True)
+    model = models.ManyToManyField(ProductType, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
@@ -77,13 +72,13 @@ class Item(models.Model):
         })
 
 
-class ItemImages (models.Model):
-    item = models.ForeignKey(
-        Item, default=None, on_delete=models.CASCADE)
+class ProductImages (models.Model):
+    product = models.ForeignKey(
+        Product, default=None, on_delete=models.CASCADE)
     image = models.ImageField()
 
     def __str__(self):
-        return self.item.title
+        return self.product.title
 
 
 # class OrderItem(models.Model):
