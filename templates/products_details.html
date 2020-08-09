@@ -29,6 +29,9 @@
 			<div class="col-md-6 col-xs-12">
 				<div class="product-details-wrap">
 					<div class="product-details-active">
+						<div class="product-details-img" data-hash="image_first">
+							<img src="{{item.img_url.url}}" alt="" />
+						</div>
 						{% for p in photos %}
 						<div class="product-details-img" data-hash="{{'image_'}}{{forloop.counter0}}">
 							<img src="{{p.image.url}}" alt="" />
@@ -36,6 +39,11 @@
 						{% endfor %}
 					</div>
 					<div class="thamb-active">
+						<div class="product-details-thambnil">
+							<a href="#image_first">
+								<img src="{{item.img_url.url}}" alt="" />
+							</a>
+						</div>
 						{% for p in photos %}
 						<div class="product-details-thambnil">
 							<a href="#{{'image_'}}{{forloop.counter0}}">
@@ -50,15 +58,7 @@
 				<div class="product-details-conttent">
 					<h2>{{item.title}}</h2>
 
-					{% comment %} {% for t in item.label.all %}
-					<p>{{t}}</p>
-					<p>{{t.id}}</p>
-					{% endfor %}
 
-					{% for price in item.price.all %}
-					<p>{{price.title}}</p>
-					<p>{{price.price}}</p>
-					{% endfor %} {% endcomment %}
 					{% comment %} <div class="stock">
 						<strong>Aveilable:</strong>
 						<span>In Stock</span>
