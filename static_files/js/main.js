@@ -189,6 +189,7 @@
 		nav: true,
 		rtl: true,
 		loop: true,
+		autoplay: true,
 		navText: ['<i class="fa fa-caret-left"></i>', '<i class="fa fa-caret-right"></i>'],
 		responsive: {
 			0: {

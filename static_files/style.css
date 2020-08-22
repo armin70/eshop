@@ -708,7 +708,7 @@ img {max-width:100%;height:auto}
 	transition-delay:.3s;
 }
 .product-content{
-	padding:20px 0px 30px;
+	padding:20px 0px 20px;
 }
 .product-content a{
 	font-size:24px;
@@ -724,6 +724,7 @@ img {max-width:100%;height:auto}
 	display:inline-block;
 	margin-left:10px;
 	color:#f25c27;
+	display: block;
 }
 .product-icon ul li a span {
 	right: 0;
@@ -1031,7 +1032,7 @@ img {max-width:100%;height:auto}
 
 /*----------- testmonial-area start ---------------*/
 .testmonial-area {
-  background: rgba(0, 0, 0, 0) url("img/bg/1.jpg") no-repeat scroll center center / cover ;
+  background: rgba(0, 0, 0, 0) url("img/bg/7.jpg") no-repeat scroll center center / cover ;
   background-attachment: fixed;
 }
 .black-opacity{position:relative}
@@ -1132,6 +1133,7 @@ a.readmore {
   border-radius: 5px;
   display: inline-block;
   margin-top:10px;
+  font-size: 15px;
 }
 a.readmore:hover{
 	background:#f1f1f1;
@@ -2926,6 +2928,9 @@ footer a{
 .colors input[type="radio"]:checked + label .white {
 	border: 2px solid #3f3f3f;
 }
+.colors input[type="radio"]:checked + label .black_white {
+	border: 2px solid #7c7c7c;
+}
 .colors input[type="radio"]:checked + label .price {
 	display: block;
 }
@@ -2975,6 +2980,9 @@ footer a{
 .colors label span.pink {
 	background: #e03997;
 }
+.colors label span.black_white {
+	background: #333333;
+}
 .colors label span.black {
 	background: #000000;
 }
@@ -2989,19 +2997,19 @@ footer a{
 	position: relative;
     padding-bottom: 33px;
 }
-.radiobtn{
+.radiobtn,.radiobtn-f,.radiobtn-m,.radiobtn-b{
     display: inline-block;
     margin-top: 5px;
 }
-.radiobtn>span{
+.radiobtn>span,.radiobtn-f>span,.radiobtn-m>span.radiobtn-v>span{
 	margin: 0;
 }
-.radiobtn .second{
+.radiobtn .second,.radiobtn-f .second,.radiobtn-m .second,.radiobtn-b .second{
 	position: absolute;
 	right: 0;
 	z-index: -1;
 }
-.radiobtn .second input{
+.radiobtn .second input,.radiobtn-f .second input, .radiobtn-m .second input, .radiobtn-b .second input{
 	z-index: 2;
 }
 .price {
@@ -3027,4 +3035,59 @@ footer a{
 .size-value input:checked + label {
 	color: #f25c27;
     background: #000000;
+}
+.product-price{
+	display: block!important;
+	font-size: 17px;
+}
+.small,.small-f{
+	display: none;
+}
+.set_product .small,.set_product .small-f{
+	display: none!important;
+}
+.small.white,.small-f.white,.small.white_family,.small-f.white_family{
+	display: inline-block!important;
+}
+.radiobtn,.radiobtn-b,.radiobtn-f,.radiobtn-m{
+	display: none;
+}
+.colors .radiobtn{
+	display: inline-block!important;
+}
+input[name="size-b"]+label{
+	font-size: 11px;
+}
+.product-details-conttent form h3{
+	background: #dbdbdb;
+    padding: 3px;
+    border-radius: 5px;
+}
+.product-details-conttent pre{
+	white-space: pre-wrap;
+	display: block!important;
+    padding: initial!important; 
+    margin:initial!important;
+    font-size: initial!important;
+    line-height: 1.6!important;
+    color: initial!important;
+    word-break: initial!important;
+    word-wrap: initial!important;
+    background-color: initial!important;
+    border: initial!important;
+    border-radius: initial!important;
+	text-align: justify;
+	font-family: initial!important;
+}
+.btn-orange{
+	background-color: #f25c27;
+	color:white;
+}
+.about-section p{
+	font-size: 14px;
+    font-weight: bold;
+}
+.header-bottom-right{
+	display: flex;
+	align-items: center;
 }

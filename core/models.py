@@ -1,6 +1,13 @@
 from django.conf import settings
 from django.db import models
 from django.shortcuts import reverse
+from django.dispatch import receiver
+
+model_choice = [
+    ('single', 'single'),
+    ('set', 'set'),
+    ('family', 'family'),
+]
 
 
 class Category(models.Model):
@@ -12,6 +19,11 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
+
+@receiver(models.signals.post_delete, sender=Category)
+def submission_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
 
 
 class Tag(models.Model):
@@ -33,7 +45,7 @@ class Tag(models.Model):
 class ProductType(models.Model):
     title = models.CharField(max_length=250)
     price = models.IntegerField()
-    size = models.CharField(max_length=5, default="M")
+    small = models.BooleanField(default=True)
     @staticmethod
     def get_all_tags():
         return ProductType.objects.all()
@@ -43,14 +55,16 @@ class ProductType(models.Model):
 
 
 class Product(models.Model):
-    title = models.CharField(max_length=100)
+    title = models.CharField(max_length=255)
     desc = models.TextField(blank=True)
-    model = models.ManyToManyField(ProductType, blank=True)
+    model = models.ManyToManyField(ProductType, default="white")
     timestamp = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     img_url = models.ImageField(default="product")
     category = models.ForeignKey(
         Category, on_delete=models.CASCADE, max_length=255, default=1)
     label = models.ManyToManyField(Tag, blank=True)
+    count = models.CharField(choices=model_choice,
+                             default="single", max_length=200)
 
     def __str__(self):
         return self.title
@@ -70,6 +84,16 @@ class Product(models.Model):
             "id": self.id
         })
 
+    @property
+    def get_price(self):
+        price = []
+        for p in self.model.all():
+            price.append(p.price)
+        return min(price)
+# @receiver(models.signals.post_delete, sender=Product)
+# def submission_delete(sender, instance, **kwargs):
+#     instance.img_url.delete(False)
+
 
 class ProductImages (models.Model):
     product = models.ForeignKey(
@@ -79,6 +103,11 @@ class ProductImages (models.Model):
     def __str__(self):
         return self.product.title
 
+
+@receiver(models.signals.post_delete, sender=ProductImages)
+def submission_delete(sender, instance, **kwargs):
+    instance.image.delete(False)
+    instance.product.img_url.delete(False)
 
 # class OrderItem(models.Model):
 #     user = models.ForeignKey(settings.AUTH_USER_MODEL,

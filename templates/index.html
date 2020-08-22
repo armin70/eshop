@@ -6,7 +6,7 @@
 <div class="slider-area">
 	<div class="slider-active">
 		<div class="single-slider">
-			<img src="{% static 'img/slider/2.jpg' %}" alt="" />
+			<img src="{% static 'img/slider/slider1.jpg' %}" alt="" />
 			<div class="slider-content text-center">
 				<div class="table">
 					<div class="table-cell">
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 		<div class="single-slider">
-			<img src="{% static 'img/slider/3.jpg' %}" alt="" />
+			<img src="{% static 'img/slider/slider2.jpg' %}" alt="" />
 			<div class="slider-content text-right">
 				<div class="table">
 					<div class="table-cell">
@@ -34,7 +34,7 @@
 									<h2>تیشرت های<span> ست دونفره</span></h2>
 									<h3>با قیمت مناسب</h3>
 									<p></p>
-									<a href="#">خرید تیشرت های ست</a>
+									<a href="/categories/7/">خرید تیشرت های ست</a>
 								</div>
 							</div>
 						</div>
@@ -43,7 +43,7 @@
 			</div>
 		</div>
 		<div class="single-slider">
-			<img src="{% static 'img/slider/1.jpg' %}" alt="" />
+			<img src="{% static 'img/slider/slider4.jpg' %}" alt="" />
 			<div class="slider-content">
 				<div class="table">
 					<div class="table-cell">
@@ -52,7 +52,7 @@
 								<div class="col-md-8 col-md-offset-1 col-lg-8 col-xs-12">
 									<h2>تیشرت های <span>سریال های</span></h2>
 									<h3>روز دنیا</h3>
-									<a href="#">خرید تیشرت های سریال</a>
+									<a href="/categories/10/">خرید تیشرت های سریال</a>
 								</div>
 							</div>
 						</div>
@@ -141,50 +141,73 @@
 		</div> {% endcomment %}
 		<!-- banner-area end -->
 	</div>
-	<!-- product-area start -->
-	<div class="product-area">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2">
-					<div class="section-title text-center mb-40">
-						<h2>محصولات جدید</h2>
-						<p>جدیدترین محصولات آبادیس</p>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="product-active next-prev-style">
-					{% for item in items %}
-					<div class="col-xs-12">
-						<div class="product-wrap">
-							<div class="product-img">
-								<a href="{{item.get_absolute_url}}">
-									<img src="{{item.img_url.url}}" alt="">
-								</a>
-						
-							</div>
-							<div class="product-content text-center">
-								<a href="{{item.get_absolute_url}}">{{item.title}}</a>
-								{% comment %} <div class="ratting">
-									<ul>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star"></i></li>
-										<li><i class="fa fa-star-half-o"></i></li>
-										<li><i class="fa fa-star-o"></i></li>
-									</ul>
-								</div> {% endcomment %}
-								{% comment %} <div>{{item.price}}تومان</div> {% endcomment %}
-								{% comment %} <del>$30.00</del> {% endcomment %}
-							</div>
-						</div>
-					</div>
-					{% endfor %}
+</div>
+<div class="testmonial-area ptb-100 black-opacity">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-xs-12">
+				<div class="section-title text-center mb-40 section-title2 about-section">
+					<h2>درباره فروشگاه آبادیس</h2>
+					<p>اگر به خوش پوشی فکر میکنید؛ به آبادیس خوش آمدید. در آبادیس تیشرت هایی با طرح های متنوع و منحصربه
+						فرد و مطابق با سلیقه تان موجود است که انتخاب کردن را برای شما سخت می کند.</p>
+					<p>هریک از اقلام این مجموعه متنوع ودوست داشتنی، به صورت رایگان طی ۶ الی ۷ روز کاری ارسال می گردد.
+					</p>
+					<p>ما به کیفیت وفاداریم؛ شما به آبادیس وفادار باشید.</p>
+					<p>آبادیس، پاسخگوی طبع سخت پسند و سلیقه خاص شما می باشد و با ارائه و پشتیبانی آنلاین در زمینه های
+						مختلف در جهت بهبود هرچه بهتر خدمات، خرید کردن را به یک تجربه خوب و به یاد ماندنی برای شما تبدیل
+						می کند.</p>
+					<p>از فرصت دوستی با آبادیس استفاده کنید؛ ما هم فرصت دوستی با شما را ارج می نهیم.</p>
+					<a class="btn btn-orange" href="/about">درباره ما</a>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!-- product-area end -->
-
 </div>
+<!-- product-area start -->
+<div class="product-area mt-50 mb-40">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+				<div class="section-title text-center mb-40">
+					<h2>محصولات جدید</h2>
+					<p>جدیدترین محصولات آبادیس</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="product-active next-prev-style">
+				{% for item in items %}
+				<div class="col-xs-12">
+					<div class="product-wrap">
+						<div class="product-img">
+							<a href="{{item.get_absolute_url}}">
+								<img src="{{item.img_url.url}}" alt="">
+							</a>
+
+						</div>
+						<div class="product-content text-center">
+							<a href="{{item.get_absolute_url}}">{{item.title}}</a>
+							{% comment %} <div class="ratting">
+								<ul>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star"></i></li>
+									<li><i class="fa fa-star-half-o"></i></li>
+									<li><i class="fa fa-star-o"></i></li>
+								</ul>
+							</div> {% endcomment %}
+							<span class="product-price">{{item.get_price}} تومان</span>
+							{% comment %} <del>$30.00</del> {% endcomment %}
+							<a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
+<!-- product-area end -->
+
+
 {% endblock content %}

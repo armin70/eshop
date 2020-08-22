@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- breadcumb-area start -->
+<div class="bradcumb-area black-opacity bg-img-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="bradcumb-wrap">
+					<h2>Shoping Cart</h2>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+						<li>|</li>
+						<li><a href="shop.html">Shop</a></li>
+						<li>|</li>
+						<li>Cart</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- breadcumb-area end -->
+
+<!-- cart-area start -->
+<div class="cart-area ptb-100 bg-4">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-xs-12">
+				<h3 class="cart-title">Shoping cart</h3>
+				<div class="table-responsive mb-40">
+					<table class="cart-table">
+						<thead>
+							<tr>
+								<th>Remove</th>
+								<th>Image</th>
+								<th>Product Name</th>
+								<th>PRICE</th>
+								<th>QUANTITY</th>
+								<th>TOTAL</th>
+							</tr>
+						</thead>
+						<tbody>
+
+							{% for c in cart %}
+							<tr>
+								<td class="delete">
+									<form action="/order/deleteOrder" method="POST">{% csrf_token %}
+										<button type="submit"><i class="fa fa-times"></i></button>
+										<input type="text" hidden id="slug" name="slug" value="{{c.slug}}" />
+									</form>
+								</td>
+								<td><img src="{{c.product.img_url.url}}" alt="" /></td>
+								<td>
+									<p>{{c.product.title}}</p>
+								</td>
+								<td><span>{{c.price}}</span></td>
+								<td class="update">
+									<form class="cart_form" action="/order/updateCart" method="POST">
+										{% csrf_token %}
+
+										<input type="number" class="quantity" name="quantity" min="1"
+											value="{{c.quantity}}" />
+										<input type="text" hidden class="slug" name="slug" value="{{c.slug}}" />
+									</form>
+
+								</td>
+								<td><span>{{c.amount}}</span></td>
+							</tr>
+							{% endfor %}
+
+
+						</tbody>
+					</table>
+					<div class=" cart-btn text-right">
+						<ul>
+							<li><button class="onSubmit" type="submit">Update Cart</a></li>
+							<li><a href="#">Continue Shopping </a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<div class="total-cart">
+						<table>
+							<thead>
+								<tr>
+									<th>Sub Total</th>
+									<th>Total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>$500.00 </td>
+									<td>$500.00</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+<!-- cart-area end -->
+{% endblock content %}

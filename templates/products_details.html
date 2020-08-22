@@ -63,50 +63,335 @@
 						<strong>Aveilable:</strong>
 						<span>In Stock</span>
 					</div> {% endcomment %}
-					<p>{{item.desc}}</p>
-					<form action="/order/addtocart/{{item.id}}/" method="POST">
+					<pre>{{item.desc}}</pre>
+					<hr />
+					{% if item.count == "single" %}
+					<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/" method="POST">
 						{% csrf_token %}
 						<div class="colors">
 							{% for p in item.model.all %}
-							<span class="radiobtn">
-								<input type="radio" name="model" value="{{p.title}}" id="{{p.title}}">
+							<span class="radiobtn set_values">
+								<div class="single" style="display:none">{{p.title}}</div>
+								<input type="radio" name="model" value="{{p.title}}">
 								<label for="{{p.title}}"><span class="{{p.title}}"></span>
-									<b class="price">{{p.price}} تومان</b></label>
-								<input class="second" type="radio" name="price" value="{{p.price}}" id="{{p.price}}">
+									<b class="price"><b class="num">{{p.price}}</b> تومان</b></label>
+								<input class="second main-value" type="radio" name="price" value="{{p.price}}"
+									id="{{p.price}}">
 								<label class="second" for="{{p.price}}"><span class="{{p.title}}"></span></label>
+								<div class="small">{{p.small}}</div>
 							</span>
 							{% endfor %}
-
 						</div>
 						<div class="size">
-							<span class="size-value">
+							<span class="size-value small ">
 								<input name="size" type="radio" value="S" id="S">
 								<label for="S">S</label>
 							</span>
-							<span class="size-value">
+							<span class="size-value normal-price">
 								<input name="size" checked type="radio" value="M" id="M">
 								<label for="M">M</label>
 							</span>
-							<span class="size-value">
+							<span class="size-value normal-price">
 								<input name="size" type="radio" value="L" id="L">
 								<label for="L">L</label>
 							</span>
-							<span class="size-value">
+							<span class="size-value normal-price">
 								<input name="size" type="radio" value="XL" id="XL">
 								<label for="XL">XL</label>
 							</span>
-							<span class="size-value">
+							<span class="size-value normal-price">
 								<input name="size" type="radio" value="XXL" id="XXL">
 								<label for="XXL">XXL</label>
 							</span>
+							<span class="size-value small">
+								<input name="size" type="radio" value="3XL" id="3XL">
+								<label for="3XL">3XL</label>
+							</span>
 						</div>
-						{% comment %} <input name="quantity" type="number" value="1" min="1"> {% endcomment %}
+						<div class="qr-wrapper">
+							<input type="checkbox" name="qr" value="qr">
+							<i class="fa fa-qrcode"></i>
+							<label for="qr">بارکد (+20000 تومان)</label>
+						</div>
+						<input class="uid" name="uid" type="number" hidden>
 						<div class="quality-wrap">
 							<strong>تعداد :</strong>
 							<input name="quantity" type="number" value="1" min="1">
-							<button type="submit"><i class="fa fa-shopping-cart"></i> افزودن به سبد خرید</button>
+
 						</div>
 					</form>
+					{%elif item.count == "set"%}
+					<div class="set_product">
+						<div class="colors">
+							{% for p in item.model.all %}
+							<span class="radiobtn set_values">
+								<input type="radio" name="model" class="set" value="{{p.title}}">
+								<label for="{{p.title}}"><span class="{{p.title}}"></span>
+									<b class="price"><b class="num">{{p.price}}</b> تومان</b></label>
+								<input class="second main-value" type="radio" name="price" value="{{p.price}}"
+									id="{{p.price}}">
+								<label class="second" for="{{p.price}}"><span class="{{p.title}}"></span></label>
+								<div class="small">{{p.small}}</div>
+							</span>
+							{% endfor %}
+						</div>
+
+						<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/"
+							method="POST">
+							{% csrf_token %}
+
+							<span class="radiobtn-m">
+								<input type="checkbox" checked name="model" hidden>
+								<input class="second price-value" type="radio" name="price" value="">
+								<div class="small"></div>
+							</span>
+
+							<h3 class="set-name">مدل مردانه </h3>
+
+							<div class="size">
+								<span class="size-value normal-price small">
+									<input name="size" type="radio" value="S" id="S">
+									<label for="S">S</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" checked type="radio" value="M" id="M">
+									<label for="M">M</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="L" id="L">
+									<label for="L">L</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="XL" id="XL">
+									<label for="XL">XL</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="XXL" id="XXL">
+									<label for="XXL">XXL</label>
+								</span>
+								<span class="size-value small">
+									<input name="size" type="radio" value="3XL" id="3XL">
+									<label for="3XL">3XL</label>
+								</span>
+							</div>
+							<div class="qr-wrapper">
+								<input type="checkbox" name="qr" value="qr">
+								<i class="fa fa-qrcode"></i>
+								<label for="qr">بارکد (+20000 تومان)</label>
+							</div>
+							<input class="uid" name="uid" type="number" hidden>
+
+						</form>
+						<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/"
+							method="POST">
+							{% csrf_token %}
+							<span class="radiobtn-f">
+								<input type="checkbox" checked name="model" hidden>
+								<input class="second price-value" type="radio" name="price" value="">
+								<div class="small"></div>
+							</span>
+
+							<h3 class="set-name">مدل زنانه </h3>
+							<div class="size">
+								<span class="size-value normal-price-f small-f">
+									<input name="size-f" type="radio" value="S" id="S-f">
+									<label for="S-f">S</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" checked type="radio" value="M" id="M-f">
+									<label for="M-f">M</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="L" id="L-f">
+									<label for="L-f">L</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="XL" id="XL-f">
+									<label for="XL-f">XL</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="XXL" id="XXL-f">
+									<label for="XXL-f">XXL</label>
+								</span>
+								<span class="size-value small-f">
+									<input name="size-f" type="radio" value="3XL" id="3XL-f">
+									<label for="3XL-f">3XL</label>
+								</span>
+							</div>
+							<div class="qr-wrapper-f">
+								<input type="checkbox" name="qr" value="qr">
+								<i class="fa fa-qrcode"></i>
+								<label for="qr">بارکد (+20000 تومان)</label>
+							</div>
+							<input class="uid" name="uid" type="number" hidden>
+
+						</form>
+						<div class="quality-wrap">
+							<strong>تعداد :</strong>
+							<input name="quantity" type="number" value="1" min="1">
+
+						</div>
+					</div>
+					{% else %}
+					<div class="family">
+						<div class="colors">
+							{% for p in item.model.all %}
+							<span class="radiobtn set_values">
+								<input type="radio" name="model" class="family" value="{{p.title}}">
+								<label for="{{p.title}}"><span class="{{p.title}}"></span>
+									<b class="price"><b class="num">{{p.price}}</b> تومان</b></label>
+								<input class="second main-value" type="radio" name="price" value="{{p.price}}"
+									id="{{p.price}}">
+								<label class="second" for="{{p.price}}"><span class="{{p.title}}"></span></label>
+								<div class="small">{{p.small}}</div>
+							</span>
+							{% endfor %}
+						</div>
+
+						<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/"
+							method="POST">
+							{% csrf_token %}
+
+							<span class="radiobtn-m">
+								<input type="checkbox" checked name="model" hidden>
+								<input class="second price-value" type="radio" name="price" value="">
+								<div class="small"></div>
+							</span>
+
+							<h3 class="set-name">مدل مردانه </h3>
+
+							<div class="size">
+								<span class="size-value normal-price small">
+									<input name="size" type="radio" value="S" id="S">
+									<label for="S">S</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" checked type="radio" value="M" id="M">
+									<label for="M">M</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="L" id="L">
+									<label for="L">L</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="XL" id="XL">
+									<label for="XL">XL</label>
+								</span>
+								<span class="size-value normal-price">
+									<input name="size" type="radio" value="XXL" id="XXL">
+									<label for="XXL">XXL</label>
+								</span>
+								<span class="size-value small">
+									<input name="size" type="radio" value="3XL" id="3XL">
+									<label for="3XL">3XL</label>
+								</span>
+							</div>
+							<div class="qr-wrapper">
+								<input type="checkbox" name="qr" value="qr">
+								<i class="fa fa-qrcode"></i>
+								<label for="qr">بارکد (+20000 تومان)</label>
+							</div>
+							<input class="uid" name="uid" type="number" hidden>
+
+						</form>
+						<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/"
+							method="POST">
+							{% csrf_token %}
+							<span class="radiobtn-f">
+								<input type="checkbox" checked name="model" hidden>
+								<input class="second price-value" type="radio" name="price" value="">
+								<div class="small"></div>
+							</span>
+
+							<h3 class="set-name">مدل زنانه </h3>
+							<div class="size">
+								<span class="size-value normal-price-f small-f">
+									<input name="size-f" type="radio" value="S" id="S-f">
+									<label for="S-f">S</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" checked type="radio" value="M" id="M-f">
+									<label for="M-f">M</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="L" id="L-f">
+									<label for="L-f">L</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="XL" id="XL-f">
+									<label for="XL-f">XL</label>
+								</span>
+								<span class="size-value normal-price-f">
+									<input name="size-f" type="radio" value="XXL" id="XXL-f">
+									<label for="XXL-f">XXL</label>
+								</span>
+								<span class="size-value small-f">
+									<input name="size-f" type="radio" value="3XL" id="3XL-f">
+									<label for="3XL-f">3XL</label>
+								</span>
+							</div>
+							<div class="qr-wrapper-f">
+								<input type="checkbox" name="qr" value="qr">
+								<i class="fa fa-qrcode"></i>
+								<label for="qr">بارکد (+20000 تومان)</label>
+							</div>
+							<input class="uid" name="uid" type="number" hidden>
+
+						</form>
+
+						<form action="/order/addtocart/{{item.id}}/" data-url="/order/addtocart/{{item.id}}/"
+							method="POST">
+							{% csrf_token %}
+							<span class="radiobtn-b">
+								<input type="checkbox" checked name="model" hidden>
+								<input class="second price-value" type="radio" name="price" value="">
+								<div class="small"></div>
+							</span>
+
+							<h3 class="set-name">مدل بچگانه </h3>
+							<div class="size">
+								<span class="size-value">
+									<input name="size-b" type="radio" value="0" id="zero">
+									<label for="zero">سایز 0</label>
+								</span>
+								<span class="size-value">
+									<input name="size-b" checked type="radio" value="1" id="one">
+									<label for="one">سایز 1</label>
+								</span>
+								<span class="size-value">
+									<input name="size-b" type="radio" value="2" id="two">
+									<label for="two">سایز 2</label>
+								</span>
+								<span class="size-value">
+									<input name="size-b" type="radio" value="3" id="three">
+									<label for="three">سایز 3</label>
+								</span>
+								<span class="size-value">
+									<input name="size-b" type="radio" value="4" id="four">
+									<label for="four">سایز 4</label>
+								</span>
+
+							</div>
+							<div class="qr-wrapper-f">
+								<input type="checkbox" name="qr" value="qr">
+								<i class="fa fa-qrcode"></i>
+								<label for="qr">بارکد (+20000 تومان)</label>
+							</div>
+							<input class="uid" name="uid" type="number" hidden>
+
+						</form>
+						<div class="quality-wrap">
+							<strong>تعداد :</strong>
+							<input name="quantity" type="number" value="1" min="1">
+
+						</div>
+					</div>
+					{% endif %}
+
+					<div class="quality-wrap">
+						<button type="submit" class="addtocart"><i class="fa fa-shopping-cart"></i> افزودن به سبد
+							خرید</button>
+					</div>
 					{% comment %} <ul>
 						<li>4.5 inch HD Touch Screen (1280 x 720)</li>
 						<li>Android 4.4 KitKat OS</li>

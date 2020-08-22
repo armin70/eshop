@@ -58,7 +58,7 @@ def CategoryView(req, id):
     paginator = Paginator(category_products_list, 12)
     page_number = req.GET.get('page')
     category_products = paginator.get_page(page_number)
-    return render(req, 'category.html', {"category": category[0], "category_items": category_products, "page_number": page_number})
+    return render(req, 'category.html', {"category": category[0], "category_items": category_products, "page_number": page_number, "page": paginator})
 
 
 def TagView(req, id):

@@ -14,3 +14,4 @@ media
 /.vscode
 /Lib/site-packages
 /Lib/site-packages/django_allauth-0.42.0-py3.8.egg-info
+/eshop/settings.py
