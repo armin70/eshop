@@ -10,7 +10,9 @@
 				<div class="bradcumb-wrap">
 					<h2>{{category}}</h2>
 					<ul>
-						<li><a href="index.html">صفحه اصلی</a></li>
+						<li><a href="/">صفحه اصلی</a></li>
+						<li>|</li>
+						<li><a href="/products">فروشگاه</a></li>
 						<li>|</li>
 						<li>{{category}}</li>
 					</ul>
@@ -20,7 +22,7 @@
 	</div>
 </div>
 <!-- breadcumb-area end -->
-<div class="shop-area ptb-100 bg-4 product-area2">
+<div class="shop-area bg-4 product-area2">
 	<div class="container">
 		<div class="row">
 			<div class="col-xs-12">
@@ -42,7 +44,7 @@
 										<span class="prodcut-price">{{item.get_price}} تومان</span>
 										{% comment %} <del>$30.00</del> {% endcomment %}
 										<div>
-										<a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
+											<a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
 										</div>
 									</div>
 								</div>

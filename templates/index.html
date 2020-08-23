@@ -82,10 +82,10 @@
 		</div>
 		<div class="row">
 			{% for cat in cats %}
-			<div class="cat-content col-md-3 pull-right item">
+			<div class="cat-content col-md-2 pull-right item">
 				<a href="/categories/{{cat.id}}">
-					<span>{{cat.name}}</span>
 					<img src="{{cat.image.url}}" alt="{{cat.name}}">
+					<span>{{cat.name}}</span>
 				</a>
 			</div>
 			{% endfor %}

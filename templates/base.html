@@ -60,7 +60,7 @@
 				<div class="row">
 					<div class="col-md-3 col-sm-4 col-xs-12">
 						<div class="logo">
-							<h1><a href="index.html"><span>E</span>como<span>S</span>hop</a></h1>
+							<h1><a href="/"><span>E</span>como<span>S</span>hop</a></h1>
 						</div>
 					</div>
 					<div class="col-md-9 col-sm-8 col-xs-12">
@@ -90,7 +90,7 @@
 						<div class="header-bottom-right text-right">
 							<div class="logo">
 								<h1><a href="/"><span>A</span>B<span>A</span>DI<span>S</span><img
-											src="{% static '/img/abadis.png' %}" /></h1>
+											src="{% static '/img/abadis.png' %}" /></a></h1>
 							</div>
 							<!-- <ul>
 								<li>
@@ -110,7 +110,7 @@
 										href="/">صفحه اصلی </a></i>
 								<li class="{% if request.resolver_match.url_name == 'products' %}active{% endif %}"><a
 										href="/products">فروشگاه </a></i>
-								<li><a href="Shop.html">محصولات<i class="fa fa-caret-down"></i></a>
+								<li><a href="javascript:void(0)">محصولات<i class="fa fa-caret-down"></i></a>
 									<ul>
 										{% for cat in cats %}
 										<li><a href="/categories/{{cat.id}}">{{cat}}</a></li>
@@ -146,7 +146,7 @@
 					<div class="col-md-3 col-sm-6">
 						<div class="footer-widget">
 							<div class="logo">
-								<h1><a href="/"><img src="{% static '/img/abadis.png' %}" /></h1>
+								<h1><a href="/"><img src="{% static '/img/abadis.png' %}" /></a></h1>
 							</div>
 						</div>
 					</div>

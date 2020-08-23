@@ -711,7 +711,7 @@ img {max-width:100%;height:auto}
 	padding:20px 0px 20px;
 }
 .product-content a{
-	font-size:24px;
+	font-size:20px;
 	margin-bottom:15px;
 	display:inline-block;
 }
@@ -2847,20 +2847,15 @@ ol{
 	max-height: 50px;
 }
 .cat-content span{
-	z-index: 9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: black;
-    border-radius: 10px 10px 0 0;
-    font-size: 31px;
-    font-weight: bold;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background: rgba(255,255,255,.6);
+	text-align: center;
+    display: block;
+    background: #F25C27;
+    color: #fff;
+    border-radius: 0 0 8px 8px;
+    padding: 2px 0;
+}
+.cat-content img{
+	border-radius: 8px 8px 0 0;
 }
 .cat-content{
 	padding-top:15px;
