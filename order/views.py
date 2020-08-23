@@ -8,6 +8,10 @@ from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartFor
 
 
 def checkout(request):
+    return render(request, "checkout.html")
+
+
+def cart(request):
     cart = ShopCart.objects.filter(uid=request.session['uid'])
     return render(request, "cart.html", {'cart': cart})
 
@@ -96,6 +100,7 @@ def updateCart(request):
                 data = ShopCart.objects.get(slug=request.POST['slug'])
                 print(data)
                 data.quantity = form.cleaned_data['quantity']
+                data.amount = form.cleaned_data['quantity'] * data.price
                 data.save()
                 messages.success(request, 'محصول به روز رسانی شد')
             else:

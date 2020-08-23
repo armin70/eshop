@@ -71,8 +71,7 @@
 						<div class="colors">
 							{% for p in item.model.all %}
 							<span class="radiobtn set_values">
-								<div class="single" style="display:none">{{p.title}}</div>
-								<input type="radio" name="model" value="{{p.title}}">
+								<input type="radio" name="model" class="single" value="{{p.title}}">
 								<label for="{{p.title}}"><span class="{{p.title}}"></span>
 									<b class="price"><b class="num">{{p.price}}</b> تومان</b></label>
 								<input class="second main-value" type="radio" name="price" value="{{p.price}}"
@@ -146,8 +145,8 @@
 								<div class="small"></div>
 							</span>
 
-							<h3 class="set-name">مدل مردانه </h3>
-
+							<h3>مدل مردانه </h3>
+							<input type="text" class="set-name" hidden value="Male">
 							<div class="size">
 								<span class="size-value normal-price small">
 									<input name="size" type="radio" value="S" id="S">
@@ -191,7 +190,8 @@
 								<div class="small"></div>
 							</span>
 
-							<h3 class="set-name">مدل زنانه </h3>
+							<h3>مدل زنانه </h3>
+							<input type="text" hidden value="Female" class="set-name">
 							<div class="size">
 								<span class="size-value normal-price-f small-f">
 									<input name="size-f" type="radio" value="S" id="S-f">
@@ -258,7 +258,8 @@
 								<div class="small"></div>
 							</span>
 
-							<h3 class="set-name">مدل مردانه </h3>
+							<h3>مدل مردانه </h3>
+							<input type="text" class="family-name" hidden value="Male">
 
 							<div class="size">
 								<span class="size-value normal-price small">
@@ -303,7 +304,8 @@
 								<div class="small"></div>
 							</span>
 
-							<h3 class="set-name">مدل زنانه </h3>
+							<h3>مدل زنانه </h3>
+							<input type="text" class="family-name" hidden value="Female">
 							<div class="size">
 								<span class="size-value normal-price-f small-f">
 									<input name="size-f" type="radio" value="S" id="S-f">
@@ -348,7 +350,8 @@
 								<div class="small"></div>
 							</span>
 
-							<h3 class="set-name">مدل بچگانه </h3>
+							<h3>مدل بچگانه </h3>
+							<input type="text" class="family-name" hidden value="Baby">
 							<div class="size">
 								<span class="size-value">
 									<input name="size-b" type="radio" value="0" id="zero">

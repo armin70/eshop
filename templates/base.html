@@ -239,6 +239,7 @@
 	<script src="{% static 'js/switcher.js' %}"></script>
 	<!-- wow.min.js -->
 	<script src="{% static 'js/wow.min.js' %}"></script>
+	<script src="{% static 'js/sweetalert2.js' %}"></script>
 	<!-- main.js -->
 	<script src="{% static 'js/main.js' %}"></script>
 	<script src="{% static 'js/fingerprint.js' %}"></script>
@@ -250,6 +251,13 @@
 			$(this).children("input").prop("checked", true);
 		})
 		$(document).ready(function () {
+
+
+			var sum = 0;
+			$('table.cart-table .amount').each(function () {
+				sum += parseInt($(this).text());
+			});
+			$(".total-cart tbody tr td").text(sum)
 			$(".set_values").first().children("label").first().addClass("checked");
 
 			$(".radiobtn").first().children("input").prop("checked", true);
@@ -262,7 +270,7 @@
 					$(".size .small-f").addClass(split[1])
 				}
 			} else if ($(".single").length > 0) {
-				$(".size .small").addClass($(".single").text())
+				$(".size .small").addClass($(".checked").siblings(".single").val())
 			} else {
 				$(".size .small").addClass($(".checked").siblings(".family").val())
 				$(".size .small-f").addClass($(".checked").siblings(".family").val())
@@ -355,7 +363,9 @@
 			$('.radiobtn label').click(function () {
 				var lastClass = $('.size .small').attr('class').split(' ').pop();
 				$('.size .small').removeClass(lastClass);
-				var lastClass = $('.size .small-f').attr('class').split(' ').pop();
+				if ($(".small-f").length > 0) {
+					var lastClass = $('.size .small-f').attr('class').split(' ').pop();
+				}
 				$('.size .small-f').removeClass(lastClass);
 				$(".checked").removeClass("checked")
 				$(this).addClass("checked")
@@ -367,8 +377,7 @@
 						$(".size .small-f").addClass(split[1])
 					}
 				} else if ($(".single").length > 0) {
-					$(".size .small").addClass($(".single").text())
-					$(".size .small").addClass($(".checked").siblings(".single").text())
+					$(".size .small").addClass($(".checked").siblings(".single").val())
 				} else {
 					$(".size .small").addClass($(".checked").siblings(".family").val())
 					$(".size .small-f").addClass($(".checked").siblings(".family").val())
@@ -381,91 +390,132 @@
 			// 		$(this).children("input[type='checkbox']").val("False")
 			// 	}
 			// })
+			// function walkNode(node) {
+			// 	if (node.nodeType == 3) {
+			// 		// Do your replacement here
+			// 		node.data = node.data.replace(/\d/g, convert);
+			// 	}
+
+			// 	// Also replace text in child nodes
+			// 	for (var i = 0; i < node.childNodes.length; i++) {
+			// 		walkNode(node.childNodes[i]);
+			// 	}
+			// }
+
+			// walkNode(document.getElementsByTagName('body')[0]);
+
+			// function convert(a) {
+			// 	return ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'][a];
+			// }
 		})
 
 
 	</script>
-</body>
-<script>
-	$('.onSubmit').click(function (e) {
-		$('table.cart-table td.update form ').each(function () {
-			e.preventDefault()
-			$.ajax({
-				type: 'POST',
-				url: '/order/updateCart',
-				data: {
-					quantity: $(this).find('.quantity').val(),
-					slug: $(this).find('.slug').val(),
-					csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-				},
-				success: function () {
-					alert('done')
+	<script>
+		$('.onSubmit').click(function (e) {
+			$('table.cart-table td.update form ').each(function () {
+				$.ajax({
+					type: 'POST',
+					url: '/order/updateCart',
+					data: {
+						quantity: $(this).find('.quantity').val(),
+						slug: $(this).find('.slug').val(),
+						csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+					},
+					success: function () {
+						Swal.fire(
+							'',
+							'محصول به سبد خریدتان اضافه شد',
+							'success'
+						)
+					}
+				})
+			})
+			location.reload()
+		})
+		$('.addtocart').click(function (e) {
+			$('.product-details-area form ').each(function () {
+				e.preventDefault()
+				if ($('.set_product').length > 0) {
+					console.log($(this).find('.set-name').val())
+					$.ajax({
+						type: 'POST',
+						url: $(this).data('url'),
+						data: {
+							price: parseFloat($('.checked .price .num').text()) / 2,
+							size: $(this).find('.size-value input[type="radio"]:checked').val(),
+							qr: $(this).find('input[name="qr"]:checked').val(),
+							model: $('.checked').siblings('input[name="model"]').val() + "-" + $(this).find('.set-name').val(),
+							uid: $(this).find('input[name="uid"]').val(),
+							quantity: $('input[name="quantity"]').val(),
+							csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+						},
+						success: function () {
+							Swal.fire(
+								'',
+								'محصول به سبد خریدتان اضافه شد',
+								'success'
+							)
+						}
+					})
+				} else if ($('.family').length > 0) {
+					console.log($('.checked').siblings('input[name="model"]').val() + "-" + $(this).find('.family-name').val())
+					console.log(parseFloat($('.checked .price .num').text()) / 3)
+					console.log($(this).find('.size-value input[type="radio"]:checked').val())
+					console.log($(this).find('input[name="qr"]:checked').val())
+					console.log($(this).find('input[name="uid"]').val())
+					console.log($('input[name="quantity"]').val())
+					console.log($('input[name=csrfmiddlewaretoken]').val())
+					$.ajax({
+						type: 'POST',
+						url: $(this).data('url'),
+						data: {
+							price: parseFloat($('.checked .price .num').text()) / 3,
+							size: $(this).find('.size-value input[type="radio"]:checked').val(),
+							qr: $(this).find('input[name="qr"]:checked').val(),
+							model: $('.checked').siblings('input[name="model"]').val() + "-" + $(this).find('.family-name').val(),
+							uid: $(this).find('input[name="uid"]').val(),
+							quantity: $('input[name="quantity"]').val(),
+							csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+						},
+						success: function () {
+							Swal.fire(
+								'',
+								'محصول به سبد خریدتان اضافه شد',
+								'success'
+							)
+						}
+					})
 				}
+				else {
+					console.log(parseInt($('.checked .price .num').text()))
+					$.ajax({
+						type: 'POST',
+						url: $(this).data('url'),
+						data: {
+							price: parseInt($('.checked .price .num').text()),
+							size: $(this).find('.size-value input[type="radio"]:checked').val(),
+							qr: $(this).find('input[name="qr"]:checked').val(),
+							model: $('.checked').siblings('input[name="model"]').val() + $(this).find('.set-name').text(),
+							uid: $(this).find('input[name="uid"]').val(),
+							quantity: $('input[name="quantity"]').val(),
+							csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+						},
+						success: function () {
+							Swal.fire(
+								'',
+								'محصول به سبد خریدتان اضافه شد',
+								'success'
+							)
+						}
+					})
+				}
+
 			})
 		})
-	})
-	$('.addtocart').click(function (e) {
-		$('.product-details-area form ').each(function () {
-			e.preventDefault()
-			console.log($(this).find('.set-name').text())
-			if ($('.set_product').length > 0) {
-				$.ajax({
-					type: 'POST',
-					url: $(this).data('url'),
-					data: {
-						price: parseInt($('.checked .price .num').text()) / 2,
-						size: $(this).find('.size-value input[type="radio"]:checked').val(),
-						qr: $(this).find('input[name="qr"]:checked').val(),
-						model: $('.checked').siblings('input[name="model"]').val() + $(this).find('.set-name').text(),
-						uid: $(this).find('input[name="uid"]').val(),
-						quantity: $('input[name="quantity"]').val(),
-						csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-					},
-					success: function () {
-						alert('done')
-					}
-				})
-			} else if ($('.family').length > 0) {
-				$.ajax({
-					type: 'POST',
-					url: $(this).data('url'),
-					data: {
-						price: parseInt($('.checked .price .num').text()) / 3,
-						size: $(this).find('.size-value input[type="radio"]:checked').val(),
-						qr: $(this).find('input[name="qr"]:checked').val(),
-						model: $('.checked').siblings('input[name="model"]').val() + $(this).find('.set-name').text(),
-						uid: $(this).find('input[name="uid"]').val(),
-						quantity: $('input[name="quantity"]').val(),
-						csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-					},
-					success: function () {
-						alert('done')
-					}
-				})
-			}
-			else {
-				console.log(parseInt($('.checked .price .num').text()))
-				$.ajax({
-					type: 'POST',
-					url: $(this).data('url'),
-					data: {
-						price: parseInt($('.checked .price .num').text()),
-						size: $(this).find('.size-value input[type="radio"]:checked').val(),
-						qr: $(this).find('input[name="qr"]:checked').val(),
-						model: $('.checked').siblings('input[name="model"]').val() + $(this).find('.set-name').text(),
-						uid: $(this).find('input[name="uid"]').val(),
-						quantity: $('input[name="quantity"]').val(),
-						csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
-					},
-					success: function () {
-						alert('done')
-					}
-				})
-			}
 
-		})
-	})
+	</script>
+</body>
 
-</script>
 
 </html>

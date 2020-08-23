@@ -2892,7 +2892,10 @@ footer a{
 .colors input[type="radio"]:checked + label span {
 	transform: scale(1.25);
 }
-.colors input[type="radio"]:checked + label .red {
+.colors input[type="radio"]:checked + label .red,.colors input[type="radio"]:checked + label .red_red,.colors input[type="radio"]:checked + label .white_red,.colors input[type="radio"]:checked + label .black_red {
+	border: 2px solid #711313;
+}
+.colors input[type="radio"]:checked + label .white_red {
 	border: 2px solid #711313;
 }
 .colors input[type="radio"]:checked + label .orange {
@@ -2922,14 +2925,17 @@ footer a{
 .colors input[type="radio"]:checked + label .pink {
 	border: 2px solid #851554;
 }
-.colors input[type="radio"]:checked + label .black {
+.colors input[type="radio"]:checked + label .black,.colors input[type="radio"]:checked + label .black_family ,.colors input[type="radio"]:checked + label .black_black{
 	border: 2px solid #646464;
 }
-.colors input[type="radio"]:checked + label .white {
+.colors input[type="radio"]:checked + label .white,.colors input[type="radio"]:checked + label .white_family,.colors input[type="radio"]:checked + label .white_white,.colors input[type="radio"]:checked + label .black_white {
 	border: 2px solid #3f3f3f;
 }
 .colors input[type="radio"]:checked + label .black_white {
 	border: 2px solid #7c7c7c;
+}
+.colors input[type="radio"]:checked + label .melanj,.colors input[type="radio"]:checked + label .melanj_melanj{
+	border: 2px solid #000000;
 }
 .colors input[type="radio"]:checked + label .price {
 	display: block;
@@ -2950,7 +2956,7 @@ footer a{
 	height: 100%;
 	transition: transform 0.2s ease-in-out;
 }
-.colors label span.red {
+.colors label span.red,.colors label span.red_red {
 	background: #db2828;
 }
 .colors label span.orange {
@@ -2980,14 +2986,26 @@ footer a{
 .colors label span.pink {
 	background: #e03997;
 }
-.colors label span.black_white {
-	background: #333333;
+.colors label span.melanj,.colors label span.melanj_melanj {
+	background: #9e9e9e;
 }
-.colors label span.black {
+.colors label span.black,.colors label span.black_family,.colors label span.black_black {
 	background: #000000;
 }
-.colors label span.white {
+.colors label span.white,.colors label span.white_family,.colors label span.white_white {
 	background: #ffffff;
+	border: 1px solid #cecece
+}
+.colors label span.black_white {
+	background-image: linear-gradient(to right, black 50% , white 50%);;
+	border: 1px solid #cecece
+}
+.colors label span.white_red {
+	background-image: linear-gradient(to right , white 50%, red 50%);;
+	border: 1px solid #cecece
+}
+.colors label span.black_red {
+	background-image: linear-gradient(to right , black 50%, red 50%);;
 	border: 1px solid #cecece
 }
 

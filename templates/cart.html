@@ -34,12 +34,12 @@
 					<table class="cart-table">
 						<thead>
 							<tr>
-								<th>Remove</th>
-								<th>Image</th>
-								<th>Product Name</th>
-								<th>PRICE</th>
-								<th>QUANTITY</th>
-								<th>TOTAL</th>
+								<th>حذف</th>
+								<th>تصویر</th>
+								<th>نام محصول</th>
+								<th>قیمت</th>
+								<th>تعداد</th>
+								<th>جمع قیمت</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -67,7 +67,7 @@
 									</form>
 
 								</td>
-								<td><span>{{c.amount}}</span></td>
+								<td><span class="amount">{{c.amount}}</span></td>
 							</tr>
 							{% endfor %}
 
@@ -76,8 +76,8 @@
 					</table>
 					<div class=" cart-btn text-right">
 						<ul>
-							<li><button class="onSubmit" type="submit">Update Cart</a></li>
-							<li><a href="#">Continue Shopping </a></li>
+							<li><button class="onSubmit" type="submit">بروز رسانی سبد خرید</a></li>
+							<li><a href="#">ادامه خرید</a></li>
 						</ul>
 					</div>
 				</div>
@@ -86,14 +86,12 @@
 						<table>
 							<thead>
 								<tr>
-									<th>Sub Total</th>
-									<th>Total</th>
+									<th>قیمت کل</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>$500.00 </td>
-									<td>$500.00</td>
+									<td></td>
 								</tr>
 							</tbody>
 						</table>
