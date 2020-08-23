@@ -2892,7 +2892,7 @@ footer a{
 .colors input[type="radio"]:checked + label span {
 	transform: scale(1.25);
 }
-.colors input[type="radio"]:checked + label .red,.colors input[type="radio"]:checked + label .red_red,.colors input[type="radio"]:checked + label .white_red,.colors input[type="radio"]:checked + label .black_red {
+.colors input[type="radio"]:checked + label .red,.colors input[type="radio"]:checked + label .red_red,.colors input[type="radio"]:checked + label .red_white,.colors input[type="radio"]:checked + label .black_red {
 	border: 2px solid #711313;
 }
 .colors input[type="radio"]:checked + label .white_red {
@@ -3000,8 +3000,8 @@ footer a{
 	background-image: linear-gradient(to right, black 50% , white 50%);;
 	border: 1px solid #cecece
 }
-.colors label span.white_red {
-	background-image: linear-gradient(to right , white 50%, red 50%);;
+.colors label span.red_white {
+	background-image: linear-gradient(to right , red 50%, white 50%);;
 	border: 1px solid #cecece
 }
 .colors label span.black_red {
