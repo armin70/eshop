@@ -2847,22 +2847,30 @@ ol{
 	max-height: 50px;
 }
 .cat-content span{
-	text-align: center;
+    text-align: center;
     display: block;
     background: #F25C27;
     color: #fff;
     border-radius: 0 0 8px 8px;
-    padding: 2px 0;
+    padding: 6px 0;
+    font-size: 18px;
+	font-weight: bold;
+	border: 2px solid #F25C27;
+	border-top: none;
 }
 .cat-content img{
 	border-radius: 8px 8px 0 0;
+	border: 2px solid #F25C27;
 }
 .cat-content{
 	padding-top:15px;
 }
-.cat-content:hover a{
-	opacity: 1;
-	transition-duration: .5s;
+.cat-content:hover span{
+    background: #fff;
+    color: #F25C27;
+    border: 2px solid #F25C27;
+	border-top: none;
+	transition-duration: .6s;
 }
 .categories{
 	padding-top: 25px;
