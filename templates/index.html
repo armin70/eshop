@@ -82,7 +82,7 @@
 		</div>
 		<div class="row">
 			{% for cat in cats %}
-			<div class="cat-content col-md-3 pull-right item">
+			<div class="cat-content col-xs-6 col-md-3 pull-right item">
 				<a href="/categories/{{cat.id}}">
 					<img src="{{cat.image.url}}" alt="{{cat.name}}">
 					<span>{{cat.name}}</span>
@@ -142,27 +142,28 @@
 		<!-- banner-area end -->
 	</div>
 </div>
-<div class="testmonial-area ptb-100 black-opacity">
-	<div class="container">
+<!-- banner-area start -->
+<div class="banner-area ptb-100 mtb-100 bg-4">
+	<div class="container-fluid">
 		<div class="row">
-			<div class="col-md-8 col-md-offset-2 col-xs-12">
-				<div class="section-title text-center mb-40 section-title2 about-section">
-					<h2>درباره فروشگاه آبادیس</h2>
-					<p>اگر به خوش پوشی فکر میکنید؛ به آبادیس خوش آمدید. در آبادیس تیشرت هایی با طرح های متنوع و منحصربه
-						فرد و مطابق با سلیقه تان موجود است که انتخاب کردن را برای شما سخت می کند.</p>
-					<p>هریک از اقلام این مجموعه متنوع ودوست داشتنی، به صورت رایگان طی ۶ الی ۷ روز کاری ارسال می گردد.
-					</p>
-					<p>ما به کیفیت وفاداریم؛ شما به آبادیس وفادار باشید.</p>
-					<p>آبادیس، پاسخگوی طبع سخت پسند و سلیقه خاص شما می باشد و با ارائه و پشتیبانی آنلاین در زمینه های
-						مختلف در جهت بهبود هرچه بهتر خدمات، خرید کردن را به یک تجربه خوب و به یاد ماندنی برای شما تبدیل
-						می کند.</p>
-					<p>از فرصت دوستی با آبادیس استفاده کنید؛ ما هم فرصت دوستی با شما را ارج می نهیم.</p>
-					<a class="btn btn-orange" href="/about">درباره ما</a>
+			<div class="col-md-6 col-sm-6">
+				<div class="banner-img">
+					<a href="#"><img src="{% static 'img/banner/1.jpg' %}" alt="" /><span>چاپ طرح دلخواه شما<br /> روی
+							تیشرت <br /><button class="btn btn-orange">اطلاعات بیشتر</button> </span> </a>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6">
+				<div class="banner-img">
+					<a href="javasscript:void(0)"><img src="{% static 'img/banner/2.jpg' %}" alt="" /> <span>انواع تیشرت
+							های
+							موزیکال <br />با صدا یا تصویر دلخواه شما <br /><button class="btn btn-orange">اطلاعات
+								بیشتر</button></span> </a>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- banner-area end -->
 <!-- product-area start -->
 <div class="product-area mt-50 mb-40">
 	<div class="container">
@@ -210,4 +211,25 @@
 <!-- product-area end -->
 
 
+<div class="testmonial-area ptb-100 black-opacity">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2 col-xs-12">
+				<div class="section-title text-center mb-40 section-title2 about-section">
+					<h2>درباره فروشگاه آبادیس</h2>
+					<p>اگر به خوش پوشی فکر میکنید؛ به آبادیس خوش آمدید. در آبادیس تیشرت هایی با طرح های متنوع و منحصربه
+						فرد و مطابق با سلیقه تان موجود است که انتخاب کردن را برای شما سخت می کند.</p>
+					<p>هریک از اقلام این مجموعه متنوع ودوست داشتنی، به صورت رایگان طی ۶ الی ۷ روز کاری ارسال می گردد.
+					</p>
+					<p>ما به کیفیت وفاداریم؛ شما به آبادیس وفادار باشید.</p>
+					<p>آبادیس، پاسخگوی طبع سخت پسند و سلیقه خاص شما می باشد و با ارائه و پشتیبانی آنلاین در زمینه های
+						مختلف در جهت بهبود هرچه بهتر خدمات، خرید کردن را به یک تجربه خوب و به یاد ماندنی برای شما تبدیل
+						می کند.</p>
+					<p>از فرصت دوستی با آبادیس استفاده کنید؛ ما هم فرصت دوستی با شما را ارج می نهیم.</p>
+					<a class="btn btn-orange" href="/about">درباره ما</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock content %}

@@ -3,16 +3,23 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm
+from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm, Order, CheckOutForm
 # Create your views here.
 
 
 def checkout(request):
-    return render(request, "checkout.html")
+    order = Order.objects.filter(uid=request.session['uid'], ordered=False)
+    cart = ShopCart.objects.filter(uid=request.session['uid'], ordered=False)
+    return render(request, "checkout.html", {'order': order[0], 'cart': cart})
+
+
+def payment(request):
+    order = Order.objects.filter(uid=request.session['uid'], ordered=False)
+    return render(request, "payment.html", {'order': order[0]})
 
 
 def cart(request):
-    cart = ShopCart.objects.filter(uid=request.session['uid'])
+    cart = ShopCart.objects.filter(uid=request.session['uid'], ordered=False)
     return render(request, "cart.html", {'cart': cart})
 
 
@@ -134,4 +141,30 @@ def deleteOrder(request):
             return HttpResponseRedirect(url)
     else:
         messages.warning(request, 'محصول حذف نشد')
+        return HttpResponseRedirect(url)
+
+
+def getInfo(request):
+    url = request.META.get('HTTP_REFERER')
+    checkproduct = Order.objects.filter(uid=request.session['uid'])
+    if checkproduct:
+        control = 1
+    else:
+        control = 0
+    if request.method == 'POST':
+        form = CheckOutForm(request.POST)
+        if form.is_valid():
+            if control == 1:
+                order = Order.objects.get(id=request.POST['id'])
+                order.name = form.cleaned_data['name']
+                order.address = form.cleaned_data['address']
+                order.zip_code = form.cleaned_data['zip_code']
+                order.tel = form.cleaned_data['tel']
+                order.cart_total = form.cleaned_data['cart_total']
+                order.save()
+                return HttpResponseRedirect("/order/payment")
+            else:
+                return HttpResponseRedirect(url)
+
+    else:
         return HttpResponseRedirect(url)

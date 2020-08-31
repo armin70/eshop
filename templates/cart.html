@@ -1,88 +1,86 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <!-- breadcumb-area start -->
 <div class="bradcumb-area black-opacity bg-img-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="bradcumb-wrap">
-					<h2>Shoping Cart</h2>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>|</li>
-						<li><a href="shop.html">Shop</a></li>
-						<li>|</li>
-						<li>Cart</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bradcumb-wrap">
+                    <h2>سبد خرید</h2>
+                    <ul>
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li>|</li>
+                        <li><a href="/products">فروشگاه</a></li>
+                        <li>|</li>
+                        <li>سبد خرید</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- breadcumb-area end -->
 
 <!-- cart-area start -->
 <div class="cart-area ptb-100 bg-4">
-	<div class="container">
-		<div class="row">
+    <div class="container">
+        <div class="row">
 
-			<div class="col-xs-12">
-				<h3 class="cart-title">Shoping cart</h3>
-				<div class="table-responsive mb-40">
-					<table class="cart-table">
-						<thead>
-							<tr>
-								<th>حذف</th>
-								<th>تصویر</th>
-								<th>نام محصول</th>
-								<th>قیمت</th>
-								<th>تعداد</th>
-								<th>جمع قیمت</th>
-							</tr>
-						</thead>
-						<tbody>
+            <div class="col-xs-12">
+                <h3 class="cart-title">سبد خرید شما</h3>
+                <div class="table-responsive mb-40">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th>حذف</th>
+                                <th>تصویر</th>
+                                <th>نام محصول</th>
+                                <th>قیمت</th>
+                                <th>تعداد</th>
+                                <th>جمع قیمت</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
-							{% for c in cart %}
-							<tr>
-								<td class="delete">
-									<form action="/order/deleteOrder" method="POST">{% csrf_token %}
-										<button type="submit"><i class="fa fa-times"></i></button>
-										<input type="text" hidden id="slug" name="slug" value="{{c.slug}}" />
-									</form>
-								</td>
-								<td><img src="{{c.product.img_url.url}}" alt="" /></td>
-								<td>
-									<p>{{c.product.title}}</p>
-								</td>
-								<td><span>{{c.price}}</span></td>
-								<td class="update">
-									<form class="cart_form" action="/order/updateCart" method="POST">
-										{% csrf_token %}
+                            {% for c in cart %}
+                            <tr>
+                                <td class="delete">
+                                    <form action="/order/deleteOrder" method="POST">{% csrf_token %}
+                                        <button type="submit"><i class="fa fa-times"></i></button>
+                                        <input type="text" hidden id="slug" name="slug" value="{{c.slug}}" />
+                                    </form>
+                                </td>
+                                <td><img src="{{c.product.img_url.url}}" alt="" /></td>
+                                <td>
+                                    <p>{{c.product.title}}</p>
+                                </td>
+                                <td><span>{{c.price}}</span></td>
+                                <td class="update">
+                                    <form class="cart_form" action="/order/updateCart" method="POST">
+                                        {% csrf_token %}
 
-										<input type="number" class="quantity" name="quantity" min="1"
-											value="{{c.quantity}}" />
-										<input type="text" hidden class="slug" name="slug" value="{{c.slug}}" />
-									</form>
+                                        <input type="number" class="quantity" name="quantity" min="1" value="{{c.quantity}}" />
+                                        <input type="text" hidden class="slug" name="slug" value="{{c.slug}}" />
+                                    </form>
 
-								</td>
-								<td><span class="amount">{{c.amount}}</span></td>
-							</tr>
-							{% endfor %}
+                                </td>
+                                <td><span class="amount">{{c.amount}}</span></td>
+                            </tr>
+                            {% endfor %}
 
 
-						</tbody>
-					</table>
-					<div class=" cart-btn text-right">
-						<ul>
-							<li><button class="onSubmit" type="submit">بروز رسانی سبد خرید</a></li>
-							<li><a href="#">ادامه خرید</a></li>
+                        </tbody>
+                    </table>
+                    <div class=" cart-btn text-right">
+                        <ul>
+                            <li><button class="onSubmit" type="submit">بروز رسانی سبد خرید</a></li>
+							<li><a href="/prdocuts">ادامه خرید</a></li>
+							<li><a href="/order/checkout">تسویه حساب</a></li>
 						</ul>
 					</div>
 				</div>
 				<div class="table-responsive">
-					<div class="total-cart">
+					<div class="cart-total">
 						<table>
 							<thead>
 								<tr>

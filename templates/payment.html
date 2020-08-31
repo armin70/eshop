@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+<!-- breadcumb-area start -->
+<div class="bradcumb-area black-opacity bg-img-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bradcumb-wrap">
+                    <h2>پرداخت</h2>
+                    <ul>
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li>|</li>
+                        <li><a href="/products">فروشگاه</a></li>
+                        <li>|</li>
+                        <li>پرداخت</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- breadcumb-area end -->
+
+<!-- cart-area start -->
+<div class="cart-area payment ptb-100 bg-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3> شماره سفارش شما : {{order.id}}</h3>
+                <p>لطفا از طریق یکی از راه های زیر به ما پیام دهید تا خرید خود را نهایی کنید</p>
+                <a href="https://www.instagram.com/abadis_tshirt/"><i
+                    class="fa fa-instagram"></i></a>
+                <a href="https://t.me/abadistshirt"><i class="fa fa-telegram"></i></a>
+                <a href="https://wa.me/00989109388289"><i class="fa fa-whatsapp"></i></a>
+                <p>شماره پشتیبانی: 09109388289</p>
+            </div>
+            <div class="col-md-6">
+                <img src="{% static 'img/payment.jpg' %}" alt="payment">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- cart-area end -->
+{% endblock content %}

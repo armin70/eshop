@@ -1,132 +1,96 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <!-- breadcumb-area start -->
 <div class="bradcumb-area black-opacity bg-img-3">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="bradcumb-wrap">
-					<h2>CheckOut</h2>
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li>|</li>
-						<li><a href="shop.html">Shop</a></li>
-						<li>|</li>
-						<li>CheckOut</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bradcumb-wrap">
+                    <h2>تسویه حساب</h2>
+                    <ul>
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li>|</li>
+                        <li><a href="/products">فروشگاه</a></li>
+                        <li>|</li>
+                        <li>تسویه حساب</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- breadcumb-area end -->
 
 <!-- checkout-area start -->
-<div class="checkout-area ptb-100 bg-4">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<h3 class="cart-title">CheckOut</h3>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-6">
-				<div class="checkout-form-wrap mb-20">
-					<h3 class="checkout-title">Billing Information</h3>
-					<div class="checkout-form">
-						<div class="row">
-							<div class="col-md-6">
-								<p>First Name <span>*</span></p>
-								<input type="text" placeholder="Your first name..." />
-							</div>
-							<div class="col-md-6">
-								<p>Last Name <span>*</span></p>
-								<input type="text" placeholder="Your Last name..." />
-							</div>
-							<div class="col-xs-12">
-								<p>Company Name</p>
-								<input type="text" placeholder="Your company name..." />
-							</div>
-							<div class="col-md-6">
-								<p>Phone <span>*</span></p>
-								<input type="text" placeholder="Your phone..." />
-							</div>
-							<div class="col-md-6">
-								<p>Email Address <span>*</span></p>
-								<input type="email" placeholder="Your email address..." />
-							</div>
-							<div class="col-md-6">
-								<p>Country <span>*</span></p>
-								<select name="select">
-									<option value="Select your Country...">Usa</option>
-									<option>India</option>
-									<option>Pakisthan</option>
-									<option>Japan</option>
-									<option>Bangladesh</option>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<p>State / City <span>*</span></p>
-								<select name="select">
-									<option value="Select your Country...">Dhaka</option>
-									<option>Jessor</option>
-									<option>Khulna</option>
-									<option>Japan</option>
-									<option>Bangladesh</option>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<p>Town <span>*</span></p>
-								<select name="select">
-									<option value="Select your Country...">Dhaka</option>
-									<option>Jessor</option>
-									<option>Khulna</option>
-									<option>Japan</option>
-									<option>Bangladesh</option>
-								</select>
-							</div>
-							<div class="col-md-6">
-								<p>EZIP / Post Code <span>*</span></p>
-								<input type="email" placeholder="Your ZIP/Post Code here..." />
-							</div>
-							<div class="col-xs-12">
-								<p>Address <span>*</span></p>
-								<input type="text" placeholder="Street address..." />
-								<input type="text" placeholder="Apartment, suite, unit etc. (optional)" />
-								<input type="checkbox" />
-								<span>Ship to the same address</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="checkout-form-wrap mb-20">
-					<h3 class="checkout-title">Your Order</h3>
-					<div class="checkout-form">
-						<div class="row">
-							<div class="col-xs-12">
-								<ul>
-									<li>Chomok Website Mock Up <strong>$30.00</strong></li>
-									<li>Tree Inspiration Logo Template <strong>$25.00</strong></li>
-									<li>Music Player UI Sets <strong>$19.00</strong></li>
-								</ul>
-							</div>
-							<div class=" col-xs-12">
-								<ul>
-									<li><b>Cart Subtotal</b> <strong>$74.00</strong></li>
-									<li><b>Shipping</b> <strong>$17.00</strong></li>
-									<li class="last"><b>Cart Total</b> <strong>$91.00</strong></li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<div class="checkout-area ptb-100 bg-4 form-style">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h3 class="cart-title">تسویه حساب</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <form class="checkout-form-wrap mb-20" method="POST" action="/order/getinfo">
+                    {% csrf_token %}
+                    <h3 class="checkout-title">مشخصات گیرنده</h3>
+                    <div class="checkout-form">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>نام و نام خانوادگی<span>*</span></p>
+                                <input type="text" name="name">
+                            </div>
+                            <div class="col-md-12">
+                                <p>شماره تماس <span>*</span></p>
+                                <input type="text" name="tel">
+                            </div>
+
+
+                            <div class="col-md-12">
+                                <p>کد پستی <span>*</span></p>
+                                <input type="text" name="zip_code">
+                            </div>
+                            <div class="col-md-12">
+                                <p>آدرس <span>*</span></p>
+                                <textarea class="" type="text" name="address"></textarea>
+                            </div>
+                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                <button id="submit" class="cont-submit btn-contact" name="submit">پرداخت</button>
+                            </div>
+                            <input class="cart-total" type="number" hidden name="cart_total">
+                            <input type="number" hidden name="id" value="{{order.id}}">
+                        </div>
+
+                    </div>
+
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div class="checkout-form-wrap mb-20">
+                    <h3 class="checkout-title">سفارش شما</h3>
+                    <div class="checkout-form">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <ul>
+                                    {% for c in cart %}
+                                    <li> {{c.quantity}} عدد {{c.product.title}} <strong class="amount"> {{c.amount}}
+											تومان</strong>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+
+                            <div class=" col-xs-12">
+                                <ul>
+                                    <li class="last cart-total"><b>قیمت کل</b> <b> <strong></strong> تومان </b></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- checkout-area end -->
 <!-- cart-area end -->
