@@ -1,5 +1,5 @@
 from django.contrib import messages
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, HttpResponse
 from django.core.paginator import Paginator
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
@@ -122,3 +122,7 @@ def TagView(req, id):
 #     else:
 #         messages.info(req, "you do not have an order")
 #         return redirect("core:products_details", pk=id)
+
+
+def sitemap(request):
+    return HttpResponse(open('sitemap.xml').read())

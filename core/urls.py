@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import index, ProductsView, ProductDetails, CategoryView, contactUs, about, TagView
-
+from .views import index, ProductsView, ProductDetails, CategoryView, contactUs, about, TagView, sitemap
 app_name = 'core'
 
 urlpatterns = [
@@ -10,6 +9,7 @@ urlpatterns = [
     path('products', ProductsView.as_view(), name="products"),
     path('contact', contactUs, name="contactUs"),
     path('about', about, name="aboutUs"),
+    path('sitemap', sitemap, name="sitemap"),
     path('products/<int:pk>/', ProductDetails, name="products_details"),
     path('categories/<int:id>/', CategoryView),
     path('tags/<int:id>/', TagView)
