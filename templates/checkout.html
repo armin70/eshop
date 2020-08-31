@@ -38,21 +38,19 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p>نام و نام خانوادگی<span>*</span></p>
-                                <input type="text" name="name">
+                                <input type="text" name="name" required value="{% if order.name %}{{order.name}}{% endif %}">
                             </div>
                             <div class="col-md-12">
                                 <p>شماره تماس <span>*</span></p>
-                                <input type="text" name="tel">
+                                <input type="text" name="tel" required value="{% if order.tel %}{{order.tel}}{% endif %}">
                             </div>
-
-
                             <div class="col-md-12">
                                 <p>کد پستی <span>*</span></p>
-                                <input type="text" name="zip_code">
+                                <input type="text" name="zip_code" required value="{% if order.zip_code %}{{order.zip_code}}{% endif %}">
                             </div>
                             <div class="col-md-12">
                                 <p>آدرس <span>*</span></p>
-                                <textarea class="" type="text" name="address"></textarea>
+                                <textarea type="text" name="address" required>{% if order.address %}{{order.address}}{% endif %}</textarea>
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <button id="submit" class="cont-submit btn-contact" name="submit">پرداخت</button>

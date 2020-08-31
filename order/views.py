@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
-from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm, Order, CheckOutForm
+from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm, Order, CheckOutForm, PurchaseForm
 # Create your views here.
 
 
@@ -20,7 +20,21 @@ def payment(request):
 
 def cart(request):
     cart = ShopCart.objects.filter(uid=request.session['uid'], ordered=False)
-    return render(request, "cart.html", {'cart': cart})
+    print(cart)
+    if cart:
+        return render(request, "cart.html", {'cart': cart})
+    else:
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
+
+
+def purchase(req):
+    form = PurchaseForm(req.POST, None)
+    if form.is_valid():
+        form.save()
+    context = {
+        'form': form
+    }
+    return render(req, "purchase.html", context)
 
 
 def order(request):

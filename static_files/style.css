@@ -407,10 +407,6 @@ img {
     padding-right: 0px;
 }
 
-.mainmenu ul li:first-child {
-    padding-left: 0px;
-}
-
 .mainmenu ul li a {
     text-transform: uppercase;
     font-weight: 600;
