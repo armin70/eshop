@@ -1,90 +1,85 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 
 <!-- breadcumb-area start -->
 <div class="bradcumb-area black-opacity bg-img-1">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="bradcumb-wrap">
-					<h2>{{category}}</h2>
-					<ul>
-						<li><a href="/">صفحه اصلی</a></li>
-						<li>|</li>
-						<li><a href="/products">فروشگاه</a></li>
-						<li>|</li>
-						<li>{{category}}</li>
-						
-						<li><hr/><pre>{{category.desc}}</pre></li>
-					</ul>
-				</div>
-			</div>
-	
-		</div>
-	</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="bradcumb-wrap">
+                    <h2>{{category}}</h2>
+                    <ul>
+                        <li><a href="/">صفحه اصلی</a></li>
+                        <li>|</li>
+                        <li><a href="/products">فروشگاه</a></li>
+                        <li>|</li>
+                        <li>{{category}}</li>
+                        <li>|</li>
+                        <li>
+                            <hr/><pre>{{category.desc}}</pre></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
 <!-- breadcumb-area end -->
 <div class="shop-area ptb-100 bg-4 product-area2">
-	<div class="container">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="tab-content">
-					<div class="tab-pane active" id="grid">
-						<div class="row">
-							{% for item in category_items %}
-							<div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 pull-right">
-								<div class="product-wrap mb-30">
-									<div class="product-img">
-										<a href="{{item.get_absolute_url}}">
-											<img src="{{item.img_url.url}}" alt="">
-											{% comment %} <img class="secondary" src="img/product/2.jpg" alt="">
-											{% endcomment %}
-										</a>
-									</div>
-									<div class="product-content text-center">
-										<a href="{{item.get_absolute_url}}">{{item.title}}</a>
-										<span class="prodcut-price">{{item.get_price}} تومان</span>
-										{% comment %} <del>$30.00</del> {% endcomment %}
-										<div>
-											<a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
-										</div>
-									</div>
-								</div>
-							</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="tab-content">
+                    <div class="tab-pane active" id="grid">
+                        <div class="row">
+                            {% for item in category_items %}
+                            <div class="col-xs-12 col-lg-3 col-md-4 col-sm-6 pull-right">
+                                <div class="product-wrap mb-30">
+                                    <div class="product-img">
+                                        <a href="{{item.get_absolute_url}}">
+                                            <img src="{{item.img_url.url}}" alt=""> {% comment %} <img class="secondary" src="img/product/2.jpg" alt=""> {% endcomment %}
+                                        </a>
+                                    </div>
+                                    <div class="product-content text-center">
+                                        <a href="{{item.get_absolute_url}}">{{item.title}}</a>
+                                        <span class="prodcut-price">{{item.get_price}} تومان</span> {% comment %} <del>$30.00</del> {% endcomment %}
+                                        <div>
+                                            <a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-							{% endfor %}
+                            {% endfor %}
 
-						</div>
-							{% if page.num_pages > 1 %}
+                        </div>
+                        {% if page.num_pages > 1 %}
 
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="pagination-wrap">
-									<ul>
-										{% if category_items.has_next %}
-										<li><a href="?page={{category_items.next_page_number}}"><i
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="pagination-wrap">
+                                    <ul>
+                                        {% if category_items.has_next %}
+                                        <li><a href="?page={{category_items.next_page_number}}"><i
 													class="fa fa-angle-left"></i></a></li>
-										{% endif %}
+                                        {% endif %}
 
-										<li class="active"><a
-												href="?page={{category_items.number}}">{{category_items.number}}</a>
-										</li>
-										{% if category_items.has_previous %}
-										<li><a href="?page={{category_items.previous_page_number}}"><i
+                                        <li class="active"><a href="?page={{category_items.number}}">{{category_items.number}}</a>
+                                        </li>
+                                        {% if category_items.has_previous %}
+                                        <li><a href="?page={{category_items.previous_page_number}}"><i
 													class="fa fa-angle-right"></i></a></li>
-										{% endif %}
-									</ul>
-								</div>
-							</div>
-						</div>
-						{% endif %}
-					</div>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
 
-				</div>
-			</div>
-		</div>
-	</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 
