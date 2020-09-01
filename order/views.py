@@ -176,7 +176,7 @@ def getInfo(request):
                 order.tel = form.cleaned_data['tel']
                 order.cart_total = form.cleaned_data['cart_total']
                 order.save()
-                return HttpResponseRedirect("/order/payment")
+                return HttpResponseRedirect("https://idpay.ir/abadis")
             else:
                 return HttpResponseRedirect(url)
 
