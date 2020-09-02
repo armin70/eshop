@@ -201,6 +201,6 @@ def idpay(request):
         headers = {
             'Content-Type': 'application/json',
             'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
-            'X-SANDBOX': 'true',
         }
-        requests.post(url, data=json.dumps(body), headers=headers)
+        r = requests.post(url, data=json.dumps(body), headers=headers)
+        return print(r.text)
