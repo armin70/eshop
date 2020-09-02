@@ -3453,7 +3453,8 @@ ol {
     padding-top: 10px;
 }
 
-.form-style button {
+.form-style button,
+.form-style a {
     padding: 15px 30px;
     width: auto;
     text-transform: uppercase;
@@ -3465,7 +3466,8 @@ ol {
     transition: all .5s;
 }
 
-.form-style button:hover {
+.form-style button:hover,
+.form-style a:hover {
     background-color: transparent;
     color: #f25c27;
 }
