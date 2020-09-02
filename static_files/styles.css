@@ -3465,6 +3465,7 @@ ol {
     font-size: 18px;
     transition: all .5s;
     display: inline-block;
+    margin-top: 5px;
 }
 
 .form-style button:hover,
