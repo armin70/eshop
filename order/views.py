@@ -203,4 +203,5 @@ def idpay(request):
             'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
         }
         r = requests.post(url, data=json.dumps(body), headers=headers)
-        return print(r.text)
+
+        return HttpResponseRedirect(json.loads(r.text)['link'])
