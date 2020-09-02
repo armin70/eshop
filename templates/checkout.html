@@ -73,7 +73,7 @@
                                 <ul>
                                     {% for c in cart %}
                                     <li> {{c.quantity}} عدد {{c.product.title}} <strong class="amount"> {{c.amount}}
-											تومان</strong>
+                                            تومان</strong>
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -93,4 +93,8 @@
 </div>
 <!-- checkout-area end -->
 <!-- cart-area end -->
+<form action="/order/pay" method="POST">
+    {% csrf_token %}
+    <button type="submit">payyyyy</button>
+</form>
 {% endblock content %}

@@ -259,6 +259,13 @@
 			$(this).children("input").prop("checked", true);
 		})
 		$(document).ready(function () {
+			$('.cont-submit').click(function () {
+				Swal.fire(
+					'',
+					'پیام شما ارسال شد',
+					'success'
+				)
+			})
 			$(function () {
 				var counter = $('#container').find("*").length;
 				setInterval(function () {

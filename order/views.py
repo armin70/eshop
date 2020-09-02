@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+import requests
+import json
 
 from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm, Order, CheckOutForm, PurchaseForm
 # Create your views here.
@@ -182,3 +184,23 @@ def getInfo(request):
 
     else:
         return HttpResponseRedirect(url)
+
+
+def idpay(request):
+    if request.method == 'POST':
+        url = 'https://api.idpay.ir/v1.1/payment'
+        body = {
+            'order_id': '101',
+            'amount': 10000,
+            'name': 'قاسم رادمان',
+            'phone': '09382198592',
+            'mail': 'my@site.com',
+            'desc': 'توضیحات پرداخت کننده',
+            'callback': 'http://127.0.0.1:8000/',
+        }
+        headers = {
+            'Content-Type': 'application/json',
+            'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
+            'X-SANDBOX': 'true',
+        }
+        requests.post(url, data=json.dumps(body), headers=headers)
