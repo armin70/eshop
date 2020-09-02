@@ -437,6 +437,25 @@
 
 	</script>
 	<script>
+		$('.payment-btn').click(function (e) {
+			$.ajax({
+				type: 'POST',
+				headers: {
+					'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
+					'X-SANDBOX': true,
+					'Content-Type': 'application/json'
+				},
+				url: 'https://api.idpay.ir/v1.1/payment',
+				data: {
+					order_id: '50',
+					amount: 1000,
+					callback: 'http://127.0.0.1:8000/',
+				},
+				success: function () {
+					console.log('success')
+				}
+			})
+		})
 		$('.onSubmit').click(function (e) {
 			$('table.cart-table td.update form ').each(function () {
 				$.ajax({
@@ -484,13 +503,6 @@
 						}
 					})
 				} else if ($('.family').length > 0) {
-					console.log($('.checked').siblings('input[name="model"]').val() + "-" + $(this).find('.family-name').val())
-					console.log(parseFloat($('.checked .price .num').text()) / 3)
-					console.log($(this).find('.size-value input[type="radio"]:checked').val())
-					console.log($(this).find('input[name="qr"]:checked').val())
-					console.log($(this).find('input[name="uid"]').val())
-					console.log($('input[name="quantity"]').val())
-					console.log($('input[name=csrfmiddlewaretoken]').val())
 					$.ajax({
 						type: 'POST',
 						url: $(this).data('url'),
