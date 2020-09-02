@@ -196,7 +196,7 @@ def idpay(request):
             'phone': '09382198592',
             'mail': 'my@site.com',
             'desc': 'توضیحات پرداخت کننده',
-            'callback': 'http://127.0.0.1:8000/',
+            'callback': 'https://abadis-shop.ir/',
         }
         headers = {
             'Content-Type': 'application/json',
