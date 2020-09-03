@@ -199,12 +199,11 @@ def getInfo(request):
                     'amount': int(request.POST['cart_total']) * 10,
                     'name': form.cleaned_data['name'],
                     'phone': form.cleaned_data['tel'],
-                    'callback': 'http://127.0.0.1:8000/order/callback',
+                    'callback': 'https://abadis-shop.ir/order/callback',
                 }
                 headers = {
                     'Content-Type': 'application/json',
                     'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
-                    'X-SANDBOX': "true",
                 }
                 r = requests.post(url, data=json.dumps(body), headers=headers)
                 json_content = json.loads(r.text)
@@ -230,13 +229,11 @@ def verify(request):
         headers = {
             'Content-Type': 'application/json',
             'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
-            'X-SANDBOX': "true",
         }
         r = requests.post(url, data=json.dumps(body), headers=headers)
         json_content = json.loads(r.text)
         print(json_content)
         if r.status_code == 200:
             return render(request, "message.html", {"message": 'تراکنش با موفقیت انجام شد'})
-
         else:
             return render(request, "message.html", {"message": json_content['error_message']})
