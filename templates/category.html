@@ -35,12 +35,12 @@
                                 <div class="product-wrap mb-30">
                                     <div class="product-img">
                                         <a href="{{item.get_absolute_url}}">
-                                            <img src="{{item.img_url.url}}" alt=""> {% comment %} <img class="secondary" src="img/product/2.jpg" alt=""> {% endcomment %}
+                                            <img src="{{item.img_url.url}}" alt="{{item.title}}">
                                         </a>
                                     </div>
                                     <div class="product-content text-center">
                                         <a href="{{item.get_absolute_url}}">{{item.title}}</a>
-                                        <span class="prodcut-price">{{item.get_price}} تومان</span> {% comment %} <del>$30.00</del> {% endcomment %}
+                                        <span class="prodcut-price">{{item.get_price}} تومان</span>
                                         <div>
                                             <a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
                                         </div>

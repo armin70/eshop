@@ -29,6 +29,11 @@ def cart(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+def callback(request):
+    context = json.loads(request.POST)
+    return render(request, 'callback.html', context)
+
+
 def purchase(req):
     form = PurchaseForm(req.POST, None)
     if form.is_valid():
@@ -178,30 +183,43 @@ def getInfo(request):
                 order.tel = form.cleaned_data['tel']
                 order.cart_total = form.cleaned_data['cart_total']
                 order.save()
-                return HttpResponseRedirect("https://idpay.ir/abadis")
-            else:
-                return HttpResponseRedirect(url)
+                url = 'https://api.idpay.ir/v1.1/payment'
+                body = {
+                    'order_id': request.POST['id'],
+                    'amount': form.cleaned_data['cart_total'],
+                    'name': form.cleaned_data['name'],
+                    'phone': form.cleaned_data['tel'],
+                    'callback': 'https://abadis-shop.ir/order/callback',
+                }
+                headers = {
+                    'Content-Type': 'application/json',
+                    'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
+                }
+                r = requests.post(url, data=json.dumps(body), headers=headers)
+                json_content = json.loads(r.text)
+                if r.status_code == 201:
+                    order.orderId = json_content['id']
+                    return HttpResponseRedirect(json_content['link'])
+                else:
+                    return HttpResponse(json_content["error_message"])
+        else:
+            return HttpResponseRedirect(url)
 
     else:
         return HttpResponseRedirect(url)
 
 
-def idpay(request):
+def verify(request):
     if request.method == 'POST':
-        url = 'https://api.idpay.ir/v1.1/payment'
+        url = 'https://api.idpay.ir/v1.1/payment/verify'
         body = {
+            'id': '',
             'order_id': '101',
-            'amount': 10000,
-            'name': 'قاسم رادمان',
-            'phone': '09382198592',
-            'mail': 'my@site.com',
-            'desc': 'توضیحات پرداخت کننده',
-            'callback': 'https://abadis-shop.ir/',
         }
         headers = {
             'Content-Type': 'application/json',
             'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
         }
         r = requests.post(url, data=json.dumps(body), headers=headers)
-
-        return HttpResponseRedirect(json.loads(r.text)['link'])
+        json_content = json.loads(r.text)
+        return HttpResponse(json_content['status'])

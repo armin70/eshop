@@ -34,50 +34,16 @@
 								<div class="product-wrap mb-30">
 									<div class="product-img">
 										<a href="{{item.get_absolute_url}}">
-											<img src="{{item.img_url.url}}" alt="">
-											{% comment %} <img class="secondary" src="img/product/2.jpg" alt="">
-											{% endcomment %}
+											<img src="{{item.img_url.url}}" alt="{{item.title}}">
+										
 										</a>
-										{% comment %} <div class="product-icon">
-											<ul>
-												<li>
-													<a href="cart.html">
-														<i class="fa fa-shopping-cart"></i>
-														<span>Add to Cart</span>
-													</a>
-												</li>
-												<li>
-													<a href="wishlist.html">
-														<i class="fa fa-heart"></i>
-														<span>Wishlist</span>
-													</a>
-												</li>
-												<li>
-													<a href="checkout.html">
-														<i class="fa fa-compress"></i>
-														<span>Compare</span>
-													</a>
-												</li>
-											</ul>
-										</div> {% endcomment %}
-										{% comment %} <span class="sale">{{item.category}}</span> {% endcomment %}
 									</div>
 									<div class="product-content text-center">
 										<a href="{{item.get_absolute_url}}">{{item.title}}</a>
-										{% comment %} <div class="ratting">
-											<ul>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star"></i></li>
-												<li><i class="fa fa-star-half-o"></i></li>
-												<li><i class="fa fa-star-o"></i></li>
-											</ul>
-										</div> {% endcomment %}
 										<span class="product-price">{{item.get_price}} تومان</span>
 										<div>
 										<a class="readmore" href="{{item.get_absolute_url}}"> مشاهده</a>
 										</div>
-										{% comment %} <del>$30.00</del> {% endcomment %}
 									</div>
 								</div>
 							</div>

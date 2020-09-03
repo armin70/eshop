@@ -32,24 +32,24 @@
 				<div class="product-details-wrap">
 					<div class="product-details-active">
 						<div class="product-details-img" data-hash="image_first">
-							<img src="{{item.img_url.url}}" alt="" />
+							<img src="{{item.img_url.url}}" alt="{{item.title}}" />
 						</div>
 						{% for p in photos %}
 						<div class="product-details-img" data-hash="{{'image_'}}{{forloop.counter0}}">
-							<img src="{{p.image.url}}" alt="" />
+							<img src="{{p.image.url}}" alt="{{item.title}}" />
 						</div>
 						{% endfor %}
 					</div>
 					<div class="thamb-active">
 						<div class="product-details-thambnil">
 							<a href="#image_first">
-								<img src="{{item.img_url.url}}" alt="" />
+								<img src="{{item.img_url.url}}" alt="{{item.title}}" />
 							</a>
 						</div>
 						{% for p in photos %}
 						<div class="product-details-thambnil">
 							<a href="#{{'image_'}}{{forloop.counter0}}">
-								<img src="{{p.image.url}}" alt="" />
+								<img src="{{p.image.url}}" alt="{{item.title}}" />
 							</a>
 						</div>
 						{% endfor %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block content %}
+
+<!--contact area start-->
+<div class="container">
+
+    <form action="/order/verify" method="POST">
+        <p>{{context['id']}}</p>
+        <button type="submit">تایید</button>
+    </form>
+</div>
+
+
+
+{% endblock content %}

@@ -5,7 +5,7 @@
 <div class="slider-area">
     <div class="slider-active">
         <div class="single-slider">
-            <img src="{% static 'img/slider/slider1.jpg' %}" alt="" />
+            <img src="{% static 'img/slider/slider1.jpg' %}" alt="فروشگاه_آبادیس" />
             <div class="slider-content text-center">
                 <div class="table">
                     <div class="table-cell">
@@ -23,7 +23,7 @@
             </div>
         </div>
         <div class="single-slider">
-            <img src="{% static 'img/slider/slider2.jpg' %}" alt="" />
+            <img src="{% static 'img/slider/slider2.jpg' %}" alt="خرید_ست_دونفره" />
             <div class="slider-content text-right">
                 <div class="table">
                     <div class="table-cell">
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="single-slider">
-            <img src="{% static 'img/slider/slider4.jpg' %}" alt="" />
+            <img src="{% static 'img/slider/slider4.jpg' %}" alt="خرید_تیشترت_خانه_کاغذی" />
             <div class="slider-content">
                 <div class="table">
                     <div class="table-cell">
@@ -63,15 +63,6 @@
 </div>
 <!-- slider-area end -->
 <div class="container">
-    {% comment %}
-    <div class="cat-wrapper next-prev-style">
-        {% for cat in cats %}
-        <div class="cat-content item">
-            <a href="/categories/{{cat.id}}">{{cat.name}}</a>
-            <img src="{{cat.image.url}}" alt="{{cat.name}}">
-        </div>
-        {% endfor %}
-    </div> {% endcomment %}
     <div class="categories">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -90,54 +81,7 @@
             </div>
             {% endfor %}
         </div>
-        <!-- banner-area start -->
-        {% comment %}
-        <div class="speacial-banner-area ptb-100">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="banner-wrap">
-                            <div class="banner-img">
-                                <img src="{% static 'img/icon/1.png' %}" alt="" />
-                            </div>
-                            <div class="banner-content">
-                                <h2>35% Off This product</h2>
-                            </div>
-                            <div class="content">
-                                <p>Maecenas semper aliquam massa pharetra sem vitae nisi eleif molestie Maecenas semper aliquam massa pharetra.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="banner-wrap active">
-                            <div class="banner-img">
-                                <img src="{% static 'img/icon/2.png' %}" alt="" />
-                            </div>
-                            <div class="banner-content">
-                                <h2>60% Off This product</h2>
-                            </div>
-                            <div class="content">
-                                <p>Maecenas semper aliquam massa pharetra sem vitae nisi eleif molestie Maecenas semper aliquam massa pharetra.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="banner-wrap clear">
-                            <div class="banner-img">
-                                <img src="{% static 'img/icon/3.png' %}" alt="" />
-                            </div>
-                            <div class="banner-content">
-                                <h2>40% Off This product</h2>
-                            </div>
-                            <div class="content">
-                                <p>Maecenas semper aliquam massa pharetra sem vitae nisi eleif molestie Maecenas semper aliquam massa pharetra.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> {% endcomment %}
-        <!-- banner-area end -->
+    
     </div>
 </div>
 <!-- banner-area start -->
@@ -146,13 +90,13 @@
         <div class="row">
             <div class="col-md-6 col-sm-6">
                 <div class="banner-img">
-                    <a href="#"><img src="{% static 'img/banner/1.jpg' %}" alt="" /><span>چاپ طرح دلخواه شما<br /> روی
+                    <a href="#"><img src="{% static 'img/banner/1.jpg' %}" alt="چاپ_روی_تیشرت" /><span>چاپ طرح دلخواه شما<br /> روی
 							تیشرت <br /><button class="btn btn-orange">اطلاعات بیشتر</button> </span> </a>
                 </div>
             </div>
             <div class="col-md-6 col-sm-6">
                 <div class="banner-img">
-                    <a href="javasscript:void(0)"><img src="{% static 'img/banner/2.jpg' %}" alt="" /> <span>انواع تیشرت
+                    <a href="javasscript:void(0)"><img src="{% static 'img/banner/2.jpg' %}" alt="خرید_تیشرت" /> <span>انواع تیشرت
 							های
 							موزیکال <br />با صدا یا تصویر دلخواه شما <br /><button class="btn btn-orange">اطلاعات
 								بیشتر</button></span> </a>
@@ -180,7 +124,7 @@
                     <div class="product-wrap">
                         <div class="product-img">
                             <a href="{{item.get_absolute_url}}">
-                                <img src="{{item.img_url.url}}" alt="">
+                                <img src="{{item.img_url.url}}" alt="{{item.title}}">
                             </a>
 
                         </div>
