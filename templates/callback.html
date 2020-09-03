@@ -4,7 +4,9 @@
 <div class="container">
 
     <form action="/order/verify" method="POST">
-        <p>{{context['id']}}</p>
+    {% csrf_token %}
+        <input type="text" value="{{id}}" name="id">
+        <input type="text" value="{{order_id}}" name="order_id">
         <button type="submit">تایید</button>
     </form>
 </div>

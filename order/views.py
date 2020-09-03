@@ -2,8 +2,10 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 import requests
 import json
+import time
 
 from .models import ShopCart, ShopCartForm, UpdateCartForm, Order, deleteCartForm, Order, CheckOutForm, PurchaseForm
 # Create your views here.
@@ -29,8 +31,14 @@ def cart(request):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
 
 
+@csrf_exempt
 def callback(request):
-    context = json.loads(request.POST)
+    mydict = dict(request.POST)
+    context = {
+        'id': mydict['id'][0],
+        'order_id': mydict['order_id'][0],
+    }
+    print(context['id'][0])
     return render(request, 'callback.html', context)
 
 
@@ -186,7 +194,7 @@ def getInfo(request):
                 url = 'https://api.idpay.ir/v1.1/payment'
                 body = {
                     'order_id': request.POST['id'],
-                    'amount': form.cleaned_data['cart_total'],
+                    'amount': 10000,
                     'name': form.cleaned_data['name'],
                     'phone': form.cleaned_data['tel'],
                     'callback': 'https://abadis-shop.ir/order/callback',
@@ -213,8 +221,8 @@ def verify(request):
     if request.method == 'POST':
         url = 'https://api.idpay.ir/v1.1/payment/verify'
         body = {
-            'id': '',
-            'order_id': '101',
+            'id': request.POST['id'],
+            'order_id': request.POST['order_id'],
         }
         headers = {
             'Content-Type': 'application/json',
@@ -222,4 +230,8 @@ def verify(request):
         }
         r = requests.post(url, data=json.dumps(body), headers=headers)
         json_content = json.loads(r.text)
-        return HttpResponse(json_content['status'])
+        print(json_content)
+        if r.status_code == 200:
+            return HttpResponse('success')
+        else:
+            return HttpResponse('failed')

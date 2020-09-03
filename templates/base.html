@@ -444,25 +444,6 @@
 
 	</script>
 	<script>
-		$('.payment-btn').click(function (e) {
-			$.ajax({
-				type: 'POST',
-				headers: {
-					'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
-					'X-SANDBOX': true,
-					'Content-Type': 'application/json'
-				},
-				url: 'https://api.idpay.ir/v1.1/payment',
-				data: {
-					order_id: '50',
-					amount: 1000,
-					callback: 'http://127.0.0.1:8000/',
-				},
-				success: function () {
-					console.log('success')
-				}
-			})
-		})
 		$('.onSubmit').click(function (e) {
 			$('table.cart-table td.update form ').each(function () {
 				$.ajax({
