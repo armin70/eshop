@@ -37,6 +37,8 @@ def callback(request):
     context = {
         'id': mydict['id'][0],
         'order_id': mydict['order_id'][0],
+        'amount': mydict['amount'][0],
+        'track_id': mydict['track_id'][0],
     }
     print(context['id'][0])
     return render(request, 'callback.html', context)
@@ -194,14 +196,15 @@ def getInfo(request):
                 url = 'https://api.idpay.ir/v1.1/payment'
                 body = {
                     'order_id': request.POST['id'],
-                    'amount': 10000,
+                    'amount': int(request.POST['cart_total']) * 10,
                     'name': form.cleaned_data['name'],
                     'phone': form.cleaned_data['tel'],
-                    'callback': 'https://abadis-shop.ir/order/callback',
+                    'callback': 'http://127.0.0.1:8000/order/callback',
                 }
                 headers = {
                     'Content-Type': 'application/json',
                     'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
+                    'X-SANDBOX': "true",
                 }
                 r = requests.post(url, data=json.dumps(body), headers=headers)
                 json_content = json.loads(r.text)
@@ -209,7 +212,7 @@ def getInfo(request):
                     order.orderId = json_content['id']
                     return HttpResponseRedirect(json_content['link'])
                 else:
-                    return HttpResponse(json_content["error_message"])
+                    return render(request, "message.html", {"message": json_content['error_message']})
         else:
             return HttpResponseRedirect(url)
 
@@ -227,11 +230,13 @@ def verify(request):
         headers = {
             'Content-Type': 'application/json',
             'X-API-KEY': 'db6d4b4b-5564-4917-b512-02e6aab6aebb',
+            'X-SANDBOX': "true",
         }
         r = requests.post(url, data=json.dumps(body), headers=headers)
         json_content = json.loads(r.text)
         print(json_content)
         if r.status_code == 200:
-            return HttpResponse('success')
+            return render(request, "message.html", {"message": 'تراکنش با موفقیت انجام شد'})
+
         else:
-            return HttpResponse('failed')
+            return render(request, "message.html", {"message": json_content['error_message']})

@@ -54,7 +54,6 @@
                             </div>
                             <div class="col-md-12 col-sm-12 col-xs-12">
                                 <button id="submit" class="cont-submit btn-contact" name="submit">پرداخت</button>
-                                <span class="alert alert-info">لطفا قیمت کل در صفحه درگاه کارت به کارت وارد کنید</span>
                             </div>
                             <input class="cart-total" type="number" hidden name="cart_total">
                             <input type="number" hidden name="id" value="{{order.id}}">
@@ -93,8 +92,4 @@
 </div>
 <!-- checkout-area end -->
 <!-- cart-area end -->
-<form action="/order/pay" method="POST">
-    {% csrf_token %}
-    <button type="submit">payyyyy</button>
-</form>
 {% endblock content %}
