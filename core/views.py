@@ -126,3 +126,7 @@ def TagView(req, id):
 
 def sitemap(request):
     return HttpResponse(open('sitemap.xml').read())
+
+
+def robots(request):
+    return HttpResponse(open('robots.txt').read())
